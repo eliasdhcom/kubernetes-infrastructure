@@ -5,7 +5,8 @@
 
 1. [📘Table of Contents](#📘table-of-contents)
 2. [🖖Introduction](#🖖introduction)
-3. [🔗Links](#🔗links)
+3. [📚Documentation](#📚documentation)
+4. [🔗Links](#🔗links)
 
 ---
 
@@ -17,6 +18,14 @@ Please also see following documents:
 - [LICENSE](LICENSE.md)
 - [SECURITY](SECURITY.md)
 - [CONTRIBUTING](CONTRIBUTING.md)
+
+## 📚Documentation
+
+- Clone the repository to your local machine using the following command:
+```bash
+git clone https://github.com/EliasDH-com/K8s-Infrastructure.git
+cd K8s-Infrastructure
+```
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).

@@ -3,17 +3,16 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f Service.yaml
+# kubectl apply -f Persistent-Volume-Claim.yaml
 ---
 apiVersion: v1
-kind: Service
+kind: PersistentVolumeClaim
 metadata:
-  name: mysql
+  name: mysql-pvc
 spec:
-  clusterIP: None
-  selector:
-    app: mysql
-  ports:
-    - port: 3306
-      name: mysql
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
 ---
