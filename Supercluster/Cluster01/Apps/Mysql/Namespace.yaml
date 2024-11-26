@@ -3,14 +3,10 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f Secret.yaml
+# kubectl apply -f Namespace.yaml
 ---
 apiVersion: v1
-kind: Secret
+kind: Namespace
 metadata:
-  name: mysql-root-password
-  namespace: mysql
-type: Opaque
-data:
-  MYSQL_ROOT_PASSWORD: MTIz # 123
+  name: mysql
 ---
