@@ -21,15 +21,15 @@ jobs:
     steps:
       # Step 1
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       # Step 2
       - name: Lint YAML Files
-        uses: github/super-linter@v5
-        with:
-          entryPoint: "yaml"
+        uses: super-linter/super-linter@v7.2.0
         env:
-          LINTER_RULES_PATH: ".github/linters"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   validate-yaml:
     name: Validate Kubernetes Manifests
