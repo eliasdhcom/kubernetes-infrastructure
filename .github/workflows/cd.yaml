@@ -3,3 +3,23 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  placeholder:
+    name: Skip Execution if DISABLED
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Skip Execution
+        run: echo "This job is disabled."
+    env:
+      DISABLED: 'true'

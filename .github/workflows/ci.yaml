@@ -3,7 +3,7 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-name: Validate and Lint Kubernetes YAML
+name: CI Pipeline
 
 on:
   push:
@@ -27,7 +27,9 @@ jobs:
       - name: Lint YAML Files
         uses: github/super-linter@v5
         with:
-          file-types: "yaml"
+          entryPoint: "yaml"
+        env:
+          LINTER_RULES_PATH: ".github/linters"
 
   validate-yaml:
     name: Validate Kubernetes Manifests
