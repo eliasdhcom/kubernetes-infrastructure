@@ -1,0 +1,21 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+# kubectl apply -f Service.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver1-service
+  namespace: webserver1
+spec:
+  selector:
+    app: webserver1
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
