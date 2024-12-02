@@ -4,11 +4,13 @@
 # @since 24/11/2024        #
 ############################
 # kubectl apply -f Ingress.yaml
+# kubectl get ingress -n webserver1
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
+  namespace: webserver1
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ingress.class: "nginx"
@@ -20,8 +22,21 @@ spec:
     - hosts:
       - eliasdh.com
       secretName: eliasdh-tls
+    - hosts:
+      - www.eliasdh.com
+      secretName: wwweliasdh-tls
   rules:
     - host: eliasdh.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver1-service
+                port:
+                  number: 80
+    - host: www.eliasdh.com
       http:
         paths:
           - path: /
