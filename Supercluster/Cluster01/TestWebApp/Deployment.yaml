@@ -1,0 +1,42 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+# kubectl apply -f Deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-web-app-deployment
+  namespace: test-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-web-app
+  template:
+    metadata:
+      labels:
+        app: test-web-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+        volumeMounts:
+        - name: test-web-app-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: test-web-app-volume
+        configMap:
+          name: test-web-app-configmap
+---

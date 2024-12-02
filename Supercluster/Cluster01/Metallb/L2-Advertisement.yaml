@@ -1,0 +1,16 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+# kubectl apply -f L2-Advertisement.yaml
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: l2advertisement-1
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - address-pool-1
+---

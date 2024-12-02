@@ -8,10 +8,10 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: vpn
+  name: test-web-app
   labels:
-    name: vpn
-    app: vpn
+    name: test-web-app
+    app: test-web-app
     owner: EliasDH
     environment: production
 ---

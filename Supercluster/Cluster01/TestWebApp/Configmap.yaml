@@ -1,0 +1,22 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+# kubectl apply -f ConfigMap.yaml
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-web-app-configmap
+  namespace: test-web-app
+data:
+  index.html: |
+    <html>
+    <head><title>What's up, fam?</title></head>
+    <body>
+    <h1>What's up, fam?</h1>
+    <p>This is a test web app.</p>
+    </body>
+    </html>
+---

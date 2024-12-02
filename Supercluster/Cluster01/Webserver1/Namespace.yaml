@@ -9,4 +9,9 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: webserver1
+  labels:
+    name: webserver1
+    app: webserver1
+    owner: EliasDH
+    environment: production
 ---
