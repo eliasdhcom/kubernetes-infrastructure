@@ -1,0 +1,55 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+# kubectl apply -f  Deployment.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sshserver1-deployment
+  namespace: sshserver1
+  labels:
+    app: sshserver1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sshserver1
+  template:
+    metadata:
+      labels:
+        app: sshserver1
+    spec:
+      containers:
+      - name: sshserver1-container
+        image: lscr.io/linuxserver/openssh-server:latest
+        ports:
+        - containerPort: 2222
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Australia/Brisbane"
+        - name: USER_NAME
+          value: "user"
+        - name: USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: sshserver1-secret
+              key: password
+        - name: PASSWORD_ACCESS
+          value: "true"
+        - name: SUDO_ACCESS
+          value: "true"
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+---

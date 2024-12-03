@@ -1,0 +1,22 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+# kubectl apply -f Service.yaml
+# kubectl get svc sshserver1-service -n sshserver1 # Get LoadBalancer IP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sshserver1-service
+  namespace: sshserver1
+spec:
+  selector:
+    app: sshserver1
+  ports:
+    - protocol: TCP
+      port: 22
+      targetPort: 2222
+  type: LoadBalancer
+---
