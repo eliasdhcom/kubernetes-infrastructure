@@ -3,7 +3,6 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f Service.yaml
 ---
 apiVersion: v1
 kind: Service

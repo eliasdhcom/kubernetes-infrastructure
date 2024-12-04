@@ -27,6 +27,8 @@ git clone https://github.com/EliasDH-com/K8s-Infrastructure.git
 cd K8s-Infrastructure
 ```
 
+> **Note:** Also, an interesting repository is: [Documentation](https://github.com/EliasDH-com/Documentation).
+
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
 - 📫 How to reach us elias.dehondt@outlook.com

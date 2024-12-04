@@ -3,7 +3,6 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f  Deployment.yaml
 ---
 apiVersion: apps/v1
 kind: Deployment

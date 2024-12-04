@@ -3,7 +3,6 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f Ingress.yaml
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer

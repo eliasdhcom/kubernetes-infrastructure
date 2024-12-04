@@ -3,8 +3,6 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f Service.yaml
-# kubectl get svc sshserver1-service -n sshserver1 # Get LoadBalancer IP
 ---
 apiVersion: v1
 kind: Service

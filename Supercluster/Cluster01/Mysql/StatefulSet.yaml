@@ -3,13 +3,12 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-# kubectl apply -f StatefulSet.yaml
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
-  namespace: mijn-namespace
+  namespace: mysql
 spec:
   serviceName: "mysql"
   replicas: 3
@@ -34,7 +33,6 @@ spec:
           volumeMounts:
             - name: mysql-persistent-storage
               mountPath: /var/lib/mysql
-              readOnly: false # Allow read-write access to the MySQL data directory
           resources:
             requests:
               memory: "2Gi"
@@ -44,30 +42,14 @@ spec:
               cpu: "2"
           readinessProbe:
             tcpSocket:
-              port: 3306 # MySQL default port
-            initialDelaySeconds: 30 # Wait 30 seconds before starting the probe
-            periodSeconds: 10 # Probe every 10 seconds
-            timeoutSeconds: 5 # Timeout after 5 seconds
-            failureThreshold: 3 # Fail after 3 unsuccessful probes
-            successThreshold: 1 # Success after 1 successful probe
+              port: 3306
+            initialDelaySeconds: 30
+            periodSeconds: 10
           livenessProbe:
-            httpGet:
-              path: /healthz
+            tcpSocket:
               port: 3306
             initialDelaySeconds: 60
             periodSeconds: 30
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
-          securityContext:
-            runAsUser: 999 # Ensures the container runs as a non-root user
-            runAsGroup: 999 # Ensures the container runs as a non-root group
-            allowPrivilegeEscalation: false # Prevents privilege escalation
-            fsGroup: 9999 # This ensures files in the container are accessible by the MySQL user
-            readOnlyRootFilesystem: true # Set the entire filesystem to read-only
-            capabilities:
-              drop:
-                - ALL # Drop all unnecessary capabilities
   volumeClaimTemplates:
     - metadata:
         name: mysql-persistent-storage
@@ -76,5 +58,6 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 50Gi
+            storage: 1Gi
+        storageClassName: longhorn
 ---
