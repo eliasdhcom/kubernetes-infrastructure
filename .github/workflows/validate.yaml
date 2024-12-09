@@ -3,7 +3,7 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-name: CI Pipeline
+name: Validate
 
 on:
   push:
