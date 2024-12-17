@@ -7,8 +7,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: test-web-app-configmap
-  namespace: test-web-app
+  name: testwebapp-configmap
+  namespace: testwebapp
 data:
   index.html: |
     <html>

@@ -13,4 +13,7 @@ metadata:
     app: webserver1
     owner: EliasDH
     environment: production
+  annotations:
+    description: This namespace is used for the webserver1 application.
+    contact: info@eliasdh.com
 ---

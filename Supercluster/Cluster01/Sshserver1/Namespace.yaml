@@ -13,4 +13,7 @@ metadata:
     app: sshserver1
     owner: EliasDH
     environment: production
+  annotations:
+    description: This namespace is used for the sshserver1 application.
+    contact: info@eliasdh.com
 ---

@@ -7,17 +7,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-web-app-deployment
-  namespace: test-web-app
+  name: testwebapp-deployment
+  namespace: testwebapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-web-app
+      app: testwebapp
   template:
     metadata:
       labels:
-        app: test-web-app
+        app: testwebapp
     spec:
       containers:
       - name: nginx
@@ -32,10 +32,10 @@ spec:
             memory: "64Mi"
             cpu: "250m"
         volumeMounts:
-        - name: test-web-app-volume
+        - name: testwebapp-volume
           mountPath: /usr/share/nginx/html
       volumes:
-      - name: test-web-app-volume
+      - name: testwebapp-volume
         configMap:
-          name: test-web-app-configmap
+          name: testwebapp-configmap
 ---

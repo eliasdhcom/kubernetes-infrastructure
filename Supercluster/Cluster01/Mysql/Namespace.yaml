@@ -13,4 +13,7 @@ metadata:
     app: mysql
     owner: EliasDH
     environment: production
+  annotations:
+    description: This namespace is used for the mysql application.
+    contact: info@eliasdh.com
 ---

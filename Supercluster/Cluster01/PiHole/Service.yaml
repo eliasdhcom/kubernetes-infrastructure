@@ -7,17 +7,23 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: testwebapp-service
-  namespace: testwebapp
-  labels:
-    app: testwebapp
+  name: pihole-service
+  namespace: pihole
 spec:
   selector:
-    app: testwebapp
+    app: pihole
   ports:
-    - name: http
-      port: 80
+    - name: dns
       protocol: TCP
+      port: 53
+      targetPort: 53
+    - name: http
+      protocol: TCP
+      port: 80
       targetPort: 80
-  type: ClusterIP
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+  type: LoadBalancer
 ---
