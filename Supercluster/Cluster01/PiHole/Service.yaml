@@ -9,12 +9,18 @@ kind: Service
 metadata:
   name: pihole-service
   namespace: pihole
+  annotations:
+    metallb.universe.tf/address-pool: static-ip-1
 spec:
   selector:
     app: pihole
   ports:
-    - name: dns
+    - name: dns-tcp
       protocol: TCP
+      port: 53
+      targetPort: 53
+    - name: dns-udp
+      protocol: UDP
       port: 53
       targetPort: 53
     - name: http
@@ -26,4 +32,5 @@ spec:
       port: 443
       targetPort: 443
   type: LoadBalancer
+  loadBalancerIP: 192.168.1.120 # Static IP from the Metallb IPAddressPool (static-ip-1)
 ---

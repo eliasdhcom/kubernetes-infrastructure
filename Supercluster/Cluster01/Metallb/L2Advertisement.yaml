@@ -12,4 +12,5 @@ metadata:
 spec:
   ipAddressPools:
   - address-pool-1
+  - static-ip-1
 ---
