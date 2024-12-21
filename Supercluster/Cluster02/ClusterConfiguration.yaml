@@ -4,11 +4,11 @@
 # @since 24/11/2024        #
 ############################
 ---
-apiVersion: v1
+apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
 metadata:
   name: cluster02
-controlPlaneEndpoint: "192.168.1.170:6443"
+controlPlaneEndpoint: "10.2.0.10:6443"
 networking:
   podSubnet: "10.244.0.0/16"
 criSocket: "/run/containerd/containerd.sock"

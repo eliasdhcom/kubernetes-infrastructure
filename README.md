@@ -10,7 +10,9 @@
     1. [🌌Cluster 01](#🌌cluster-01)
     2. [🌌Cluster 02](#🌌cluster-02)
     3. [🌌Cluster 03](#🌌cluster-03)
-5. [🔗Links](#🔗links)
+5. [🖥️Interesting tools to manage your clusters](#🖥️interesting-tools-to-manage-your-clusters)
+6. [📜A must read](#📜a-must-read)
+7. [🔗Links](#🔗links)
 
 ---
 
@@ -25,11 +27,17 @@ Please also see following documents:
 
 ## 📚Documentation
 
-- [Setup-Supercluster.md](/Documentation/Setup-Supercluster.md)
-- [Cert-manager-and-nginx-ingress.md](/Documentation/Cert-manager-and-nginx-ingress.md)
-- [Create-HA-K8s-Cluster.md](/Documentation/Create-HA-K8s-Cluster.md)
-- [Install-K9s-Tool.md](/Documentation/Install-K9s-Tool.md)
-- [Install-Longhorn.md](/Documentation/Install-Longhorn.md)
+- Setup Supercluster:
+    1. [Setup The Operating System For The Nodes](Documentation/Setup-OS.md).
+    2. [Setup The Hypervisor For The Nodes](Documentation/Setup-Hypervisor.md).
+    3. [Setup Kubernetes](Documentation/Setup-Kubernetes.md).
+    4. [Setup The Proxy Server For The Master Nodes](Documentation/Setup-Proxy.md).
+    5. [Setup The Clusters For The Supercluster](Documentation/Setup-Clusters.md).
+
+- Setup Cluster Infrastructure:
+    1. [Setup Cert Manager](Documentation/Setup-CertManager.md).
+    2. [Setup Metallb](Documentation/Setup-Metallb.md).
+    3. [Setup Nginx Ingress](Documentation/Setup-NginxIngress.md).
 
 ## 🌌Supercluster Design
 
@@ -80,6 +88,14 @@ Please also see following documents:
     | 028 | node38  | cluster03 | Worker  | 10.3.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
     | 029 | node39  | cluster03 | Worker  | 10.3.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
     | 030 | proxy03 | cluster03 | Worker  | 10.3.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
+
+## 🖥️Interesting tools to manage your clusters
+
+1. [K9s](Documentation/Setup-K9s.md).
+
+## 📜A must read
+
+1. [Github Repository - Kubeadm Load Balancing](https://github.com/kubernetes/kubeadm/blob/main/docs/ha-considerations.md#options-for-software-load-balancing).
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
