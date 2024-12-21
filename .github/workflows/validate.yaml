@@ -57,8 +57,8 @@ jobs:
       # Step 3
       - name: Validate Kubernetes YAML
         run: |
-          # Test all YAML files under 'Supercluster/' for syntax errors
-          for file in $(find supercluster -name '*.yaml'); do
+          # Test all YAML files under 'Cluster01/' for syntax errors
+          for file in $(find cluster01 -name '*.yaml'); do
             echo "Validating $file"
             kubectl apply --dry-run=client -f $file
           done

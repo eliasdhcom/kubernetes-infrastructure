@@ -1,0 +1,45 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: proxyserver1-keepalived-config
+  namespace: proxyserver1
+data:
+  keepalived.conf: |
+    global_defs {
+        router_id proxy1
+        script_user root
+        script_security 1
+    }
+
+    vrrp_script check_apiserver {
+        script "/etc/keepalived/check_apiserver.sh"
+        interval 3
+        weight -2
+        fall 10
+        rise 2
+    }
+
+    vrrp_instance VI_1 {
+        state MASTER
+        interface eth0
+        virtual_router_id 51
+        priority 101
+        advert_int 1
+        authentication {
+            auth_type PASS
+            auth_pass 1111
+        }
+        virtual_ipaddress {
+            192.168.1.170
+        }
+        track_script {
+            check_apiserver
+        }
+    }
+---

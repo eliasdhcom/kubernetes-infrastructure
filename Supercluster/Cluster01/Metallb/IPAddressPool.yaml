@@ -4,6 +4,7 @@
 # @since 24/11/2024        #
 ############################
 ---
+# This is the default address pool. 
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
@@ -11,8 +12,9 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-    - 192.168.1.160-192.168.1.169
+    - 192.168.1.200-192.168.1.250 # 50 addresses.
 ---
+# This is a static ip address for PiHole (DNS).
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
@@ -20,5 +22,15 @@ metadata:
   namespace: metallb-system
 spec:
   addresses:
-    - 192.168.1.120-192.168.1.120
+    - 192.168.1.120/32 # 1 address.
+---
+# This is a static IP address for the proxy that is used for accessing the master nodes.
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: static-ip-2
+  namespace: metallb-system
+spec:
+  addresses:
+    - 192.168.1.170/32 # 1 address.
 ---

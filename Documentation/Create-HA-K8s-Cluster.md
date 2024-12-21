@@ -237,18 +237,18 @@ sudo shutdown -h now
 
 > **Note:** Assuming you did this in a virtual machine, you can convert it to a template and then, create a few instances. e.g. node01, node02, node03, ...
 
-| ID  | Name   | Roll        | IP            | CPU | RAM   | Disk | OS               | Type |
-|-----|--------|-------------|---------------| --- | ----- | ---- | -----------------| ---- |
-| 170 | proxy1 | Proxy       | 192.168.1.170 | 1   | 0.5GB | 8GB  | Ubuntu 24.04 LTS | CT   |
-| 171 | node01 | Master      | 192.168.1.171 | 2   | 2GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 172 | node02 | Master      | 192.168.1.172 | 2   | 2GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 173 | node03 | Master      | 192.168.1.173 | 2   | 2GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 174 | node04 | Worker      | 192.168.1.174 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 175 | node05 | Worker      | 192.168.1.175 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 176 | node06 | Worker      | 192.168.1.176 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 177 | node07 | Worker      | 192.168.1.177 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 178 | node08 | Worker      | 192.168.1.178 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
-| 179 | node09 | Worker      | 192.168.1.179 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| ID  | Name   | Roll   | IP            | CPU | RAM   | Disk | OS               | Type |
+| --- | ------ | ------ | ------------- | --- | ----- | ---- | -----------------| ---- |
+| 170 | proxy1 | Proxy  | 192.168.1.170 | 1   | 0.5GB | 8GB  | Ubuntu 24.04 LTS | CT   |
+| 171 | node01 | Master | 192.168.1.171 | 2   | 2GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 172 | node02 | Master | 192.168.1.172 | 2   | 2GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 173 | node03 | Master | 192.168.1.173 | 2   | 2GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 174 | node04 | Worker | 192.168.1.174 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 175 | node05 | Worker | 192.168.1.175 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 176 | node06 | Worker | 192.168.1.176 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 177 | node07 | Worker | 192.168.1.177 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 178 | node08 | Worker | 192.168.1.178 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
+| 179 | node09 | Worker | 192.168.1.179 | 2   | 4GB   | 32GB | Ubuntu 24.04 LTS | VM   |
 
 ### 👉Step 4: Set up reverse/forward proxy
 
