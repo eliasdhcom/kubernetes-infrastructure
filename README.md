@@ -25,6 +25,7 @@ Please also see following documents:
 
 ## 📚Documentation
 
+- [Setup-Supercluster.md](/Documentation/Setup-Supercluster.md)
 - [Cert-manager-and-nginx-ingress.md](/Documentation/Cert-manager-and-nginx-ingress.md)
 - [Create-HA-K8s-Cluster.md](/Documentation/Create-HA-K8s-Cluster.md)
 - [Install-K9s-Tool.md](/Documentation/Install-K9s-Tool.md)

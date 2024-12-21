@@ -1,5 +1,5 @@
 ![logo](https://eliasdh.com/assets/media/images/logo-github.png)
-# 💙🤍Create HA K8s Cluster🤍💙
+# 💙🤍Setup Supercluster🤍💙
 
 ## 📘Table of Contents
 
@@ -11,8 +11,7 @@
     3. [👉Step 3: Install and Configure Kubernetes](#👉step-3-install-and-configure-kubernetes)
     4. [👉Step 4: Set up reverse/forward proxy](#👉step-4-set-up-reverseforward-proxy)
     5. [👉Step 5: Initialize the Kubernetes cluster](#👉step-5-initialize-the-kubernetes-cluster)
-4. [📝Notes](#📝notes)
-5. [🔗Links](#🔗links)
+4. [🔗Links](#🔗links)
 
 ---
 
@@ -438,20 +437,28 @@ sudo ./get_helm.sh
 ```bash
 # Install the Cilium CLI
 helm repo add cilium https://helm.cilium.io/
+
 # Set the Cilium CLI version
 CILIUM_CLI_VERSION=$(curl -s https://raw.githubusercontent.com/cilium/cilium-cli/main/stable.txt)
+
 # Set the Cilium CLI architecture
 CLI_ARCH=amd64
+
 # Check the architecture
 if [ "$(uname -m)" = "aarch64" ]; then CLI_ARCH=arm64; fi
+
 # Download the Cilium CLI
 curl -L --fail --remote-name-all https://github.com/cilium/cilium-cli/releases/download/${CILIUM_CLI_VERSION}/cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+
 # Verify the Cilium CLI
 sha256sum --check cilium-linux-${CLI_ARCH}.tar.gz.sha256sum
+
 # Extract the Cilium CLI
 sudo tar xzvfC cilium-linux-${CLI_ARCH}.tar.gz /usr/local/bin
+
 # Remove the Cilium CLI
 rm cilium-linux-${CLI_ARCH}.tar.gz{,.sha256sum}
+
 # Install the Cilium Helm chart
 helm install cilium cilium/cilium --version 1.16.1 \
   --namespace kube-system \
@@ -471,39 +478,6 @@ watch kubectl get pods -n kube-system # Press Ctrl+C to exit
 - Check the status of the nodes. **node01**
 ```bash
 watch kubectl get nodes -o wide # Press Ctrl+C to exit
-```
-
-***Congratulations, you have your high availability cluster up and running!***
-
-## 📝Notes
-
-- Interesting commands:
-```bash
-sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock ps -a # List all containers
-
-sudo crictl --runtime-endpoint unix:///run/containerd/containerd.sock logs 494942b3f2efb # Get the logs of a container
-
-sudo kubeadm init --cri-socket "/run/containerd/containerd.sock" --pod-network-cidr "10.244.0.0/16" --cluster-name "cluster01" --upload-certs --v=5 # Initialize the cluster without high availability no ip of the reverse proxy for the control plane endpoint 
-
-sudo ufw disable # Disable the firewall
-sudo ufw enable # Enable the firewall
-sudo ufw allow 22/tcp # Allow SSH
-
-sudo kubeadm reset # Reset the cluster (remove the nodes from the cluster)
-
-kubectl get nodes -o wide # List all nodes with additional information
-
-
-sudo cat /etc/kubernetes/manifests/kube-apiserver.yaml # Check the API server configuration
-
-sudo tail -f /var/log/nginx/access.log # Check the Nginx access log
-sudo tail -f /var/log/nginx/error.log # Check the Nginx error log
-
-sudo apt-get remove -y nginx nginx-common nginx-core # Remove Nginx
-sudo apt-get purge -y nginx nginx-common nginx-core # Purge Nginx
-sudo apt-get autoremove -y # Remove unused packages
-
-sudo rm -rf $HOME/.kube/config # Remove the Kubernetes configuration
 ```
 
 ## 🔗Links
