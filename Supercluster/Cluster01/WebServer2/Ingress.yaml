@@ -1,0 +1,47 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: webserver2
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true" # Redirect HTTP to HTTPS
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - zizis.com
+      secretName: zizis-tls
+    - hosts:
+      - www.zizis.com
+      secretName: wwwzizis-tls
+  rules:
+    - host: zizis.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver2-service
+                port:
+                  number: 80
+    - host: www.zizis.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver2-service
+                port:
+                  number: 80
+---

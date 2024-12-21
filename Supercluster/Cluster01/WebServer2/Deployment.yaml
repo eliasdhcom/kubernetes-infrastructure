@@ -1,0 +1,48 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver2-deployment
+  namespace: webserver2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webserver2
+  template:
+    metadata:
+      labels:
+        app: webserver2
+    spec:
+      initContainers:
+      - name: init-git-clone
+        image: alpine/git
+        command: ["sh", "-c", "git clone --depth=1 https://github.com/EliasDH-com/Zizis.com.git /app"]
+        volumeMounts:
+        - name: webserver2-volume
+          mountPath: /app
+      containers:
+      - name: webserver2-container
+        image: python:3.9-slim
+        command: ["python3", "-m", "http.server", "8080", "--directory", "/app", "--bind", "0.0.0.0"]
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+        volumeMounts:
+        - name: webserver2-volume
+          mountPath: /app
+      volumes:
+      - name: webserver2-volume
+        emptyDir: {}
+---
