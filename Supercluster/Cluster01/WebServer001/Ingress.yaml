@@ -8,7 +8,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  namespace: webserver2
+  namespace: webserver001
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ingress.class: "nginx"
@@ -18,30 +18,30 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - zizis.com
-      secretName: zizis-tls
+      - eliasdh.com
+      secretName: eliasdh-tls
     - hosts:
-      - www.zizis.com
-      secretName: wwwzizis-tls
+      - www.eliasdh.com
+      secretName: wwweliasdh-tls
   rules:
-    - host: zizis.com
+    - host: eliasdh.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver2-service
+                name: webserver001-service
                 port:
                   number: 80
-    - host: www.zizis.com
+    - host: www.eliasdh.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver2-service
+                name: webserver001-service
                 port:
                   number: 80
 ---

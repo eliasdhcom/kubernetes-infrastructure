@@ -7,27 +7,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver2-deployment
-  namespace: webserver2
+  name: webserver001-deployment
+  namespace: webserver001
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webserver2
+      app: webserver001
   template:
     metadata:
       labels:
-        app: webserver2
+        app: webserver001
     spec:
       initContainers:
       - name: init-git-clone
         image: alpine/git
-        command: ["sh", "-c", "git clone --depth=1 https://github.com/EliasDH-com/Zizis.com.git /app"]
+        command: ["sh", "-c", "git clone --depth=1 https://github.com/EliasDH-com/Eliasdh.com.git /app"]
         volumeMounts:
-        - name: webserver2-volume
+        - name: webserver001-volume
           mountPath: /app
       containers:
-      - name: webserver2-container
+      - name: webserver001-container
         image: python:3.9-slim
         command: ["python3", "-m", "http.server", "8080", "--directory", "/app", "--bind", "0.0.0.0"]
         ports:
@@ -40,9 +40,9 @@ spec:
             memory: "64Mi"
             cpu: "250m"
         volumeMounts:
-        - name: webserver2-volume
+        - name: webserver001-volume
           mountPath: /app
       volumes:
-      - name: webserver2-volume
+      - name: webserver001-volume
         emptyDir: {}
 ---

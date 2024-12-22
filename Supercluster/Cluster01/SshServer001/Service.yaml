@@ -7,11 +7,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sshserver1-service
-  namespace: sshserver1
+  name: sshserver001-service
+  namespace: sshserver001
 spec:
   selector:
-    app: sshserver1
+    app: sshserver001
   ports:
     - protocol: TCP
       port: 22

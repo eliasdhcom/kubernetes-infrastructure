@@ -7,13 +7,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: proxyserver1
+  name: webserver001
   labels:
-    name: proxyserver1
-    app: proxyserver1
+    name: webserver001
+    app: webserver001
     owner: EliasDH
     environment: production
   annotations:
-    description: This namespace is used for the proxyserver1 application.
+    description: This namespace is used for the webserver001 application.
     contact: info@eliasdh.com
 ---

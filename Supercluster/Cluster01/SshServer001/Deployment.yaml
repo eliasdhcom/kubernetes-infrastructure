@@ -7,22 +7,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sshserver1-deployment
-  namespace: sshserver1
+  name: sshserver001-deployment
+  namespace: sshserver001
   labels:
-    app: sshserver1
+    app: sshserver001
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: sshserver1
+      app: sshserver001
   template:
     metadata:
       labels:
-        app: sshserver1
+        app: sshserver001
     spec:
       containers:
-      - name: sshserver1-container
+      - name: sshserver001-container
         image: lscr.io/linuxserver/openssh-server:latest
         ports:
         - containerPort: 2222
@@ -38,7 +38,7 @@ spec:
         - name: USER_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: sshserver1-secret
+              name: sshserver001-secret
               key: password
         - name: PASSWORD_ACCESS
           value: "true"
