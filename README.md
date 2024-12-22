@@ -38,6 +38,7 @@ Please also see following documents:
     1. [Setup Cert Manager](Documentation/Setup-CertManager.md).
     2. [Setup Metallb](Documentation/Setup-Metallb.md).
     3. [Setup Nginx Ingress](Documentation/Setup-NginxIngress.md).
+    4. [Setup Longhorn](Documentation/Setup-Longhorn.md).
 
 ## 🌌Supercluster Design
 

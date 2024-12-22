@@ -1,32 +1,32 @@
 ![logo](https://eliasdh.com/assets/media/images/logo-github.png)
-# 💙🤍Install Longhorn🤍💙
+# 💙🤍Setup Longhorn🤍💙
 
 ## 📘Table of Contents
 
 1. [📘Table of Contents](#📘table-of-contents)
 2. [🖖Introduction](#🖖introduction)
 3. [✨Steps](#✨steps)
-    1. [👉Step 1: Set up environment](#👉step-1-set-up-environment)
+    1. [👉Step 1: Test if the system is ready for Longhorn](#👉step-1-test-if-the-system-is-ready-for-longhorn)
     2. [👉Step 2: Install Longhorn](#👉step-2-install-longhorn)
-    3. [👉Step 3: Access the Longhorn UI](#👉step-3-access-the-longhorn-ui)
+    3. [👉Step 3: Check the status of the pods](#👉step-3-check-the-status-of-the-pods)
+    4. [👉Step 4: Check the status of the Longhorn system](#👉step-4-check-the-status-of-the-longhorn-system)
+    5. [👉Step 5: Get the storage class](#👉step-5-get-the-storage-class)
+    6. [👉Step 6: Create a basic authentication file](#👉step-6-create-a-basic-authentication-file)
+    7. [👉Step 7: Create a secret](#👉step-7-create-a-secret)
+    8. [👉Step 8: Set up a ingress controller](#👉step-8-set-up-a-ingress-controller)
+    9. [👉Step 9: Access the Longhorn UI](#👉step-9-access-the-longhorn-ui)
 4. [🔗Links](#🔗links)
 
 ---
 
 ## 🖖Introduction
 
-This guide will help you install Longhorn on a Kubernetes cluster. Longhorn is a distributed block storage system for Kubernetes. It is built using containers and microservices. Longhorn creates a dedicated storage controller for each block device volume and synchronously replicates the volume across multiple replicas stored on multiple nodes. The storage controller and replicas are themselves orchestrated using Kubernetes. Longhorn is lightweight, reliable, and easy to use.
+This document provides a step-by-step guide to installing `Longhorn` on the servers (nodes) in the supercluster. The steps outlined in this document are essential for ensuring the proper functioning of the servers (nodes) and the supercluster.
 
 ## ✨Steps
 
-### 👉Step 1: Set up environment
+### 👉Step 1: Test if the system is ready for Longhorn
 
-- Update and upgrade the system.
-```bash
-sudo apt-get update && sudo apt-get upgrade -y
-```
-
-- Test if the system is ready for Longhorn.
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/longhorn/longhorn/refs/tags/v1.7.2/scripts/environment_check.sh)
 ```
@@ -57,7 +57,6 @@ dpkg -l | grep nfs-common                           # Check if the nfs-common pa
 
 ### 👉Step 2: Install Longhorn
 
-- Install Longhorn.
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.7.2/deploy/longhorn.yaml
 # kubectl delete -f https://raw.githubusercontent.com/longhorn/longhorn/v1.7.2/deploy/longhorn.yaml
@@ -67,36 +66,40 @@ kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.7.2/depl
 # kubectl replace --raw "/api/v1/namespaces/longhorn-system/finalize" -f longhorn-system.json
 ```
 
-- Check the status of the pods.
+### 👉Step 3: Check the status of the pods
+
 ```bash
-kubectl get pods --namespace longhorn-system --watch
+kubectl get pods --namespace longhorn-system --watch # OPTIONAL
 ```
 
-- Check the status of the Longhorn system.
+### 👉Step 4: Check the status of the Longhorn system
+
 ```bash
-kubectl -n longhorn-system get pods
+kubectl -n longhorn-system get pods # OPTIONAL
 ```
 
-- Get the storage class.
+### 👉Step 5: Get the storage class
+
 ```bash
-kubectl get storageclass
+kubectl get storageclass # OPTIONAL
 ```
 
-### 👉Step 3: Access the Longhorn UI
+### 👉Step 6: Create a basic authentication file
 
-- Create a basic authentication file.
 ```bash
 USER=<USERNAME_HERE>; PASSWORD=<PASSWORD_HERE>; echo "${USER}:$(openssl passwd -stdin -apr1 <<< ${PASSWORD})" >> auth
 ```
 
-- Create a secret.
+### 👉Step 7: Create a secret
+
 ```bash
 kubectl create secret generic basic-auth -n longhorn-system --from-file=auth
 rm auth
 # kubectl delete secret basic-auth -n longhorn-system
 ```
 
-- Set up a ingress controller.
+### 👉Step 8: Set up a ingress controller
+
 ```bash
 kubectl apply -f Ingress.yaml
 # Service name: longhorn-frontend
@@ -104,14 +107,10 @@ kubectl apply -f Ingress.yaml
 # Port: 8080
 ```
 
-- Access the Longhorn UI.
+### 👉Step 9: Access the Longhorn UI
+
 ```bash
 kubectl get ingress -A
-```
-
-- Test the Longhorn UI.
-```bash
-curl http://<EXTERNAL_IP> # <EXTERNAL_IP> is the IP address of the ingress controller
 ```
 
 ## 🔗Links
