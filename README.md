@@ -93,6 +93,7 @@ Please also see following documents:
 ## 🖥️Interesting tools to manage your clusters
 
 1. [K9s](Documentation/Setup-K9s.md).
+2. [K10s](https://github.com/eliasdehondt/k10s).
 
 ## 📜A must read
 
