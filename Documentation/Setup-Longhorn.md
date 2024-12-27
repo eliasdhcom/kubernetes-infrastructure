@@ -15,6 +15,7 @@
     7. [👉Step 7: Create a secret](#👉step-7-create-a-secret)
     8. [👉Step 8: Set up a ingress controller](#👉step-8-set-up-a-ingress-controller)
     9. [👉Step 9: Access the Longhorn UI](#👉step-9-access-the-longhorn-ui)
+    10. [👉Step 10: Enable storage replica on worker notes](#👉step-10-enable-storage-replica-on-worker-notes)
 4. [🔗Links](#🔗links)
 
 ---
@@ -112,6 +113,15 @@ kubectl apply -f Ingress.yaml
 ```bash
 kubectl get ingress -A
 ```
+
+### 👉Step 10: Enable storage replica on worker notes
+
+```bash
+kubectl label node node01 longhorn.io/target=true
+kubectl label node node02 longhorn.io/target=true
+kubectl label node node03 longhorn.io/target=true
+```
+
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).

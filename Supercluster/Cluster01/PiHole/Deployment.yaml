@@ -1,0 +1,54 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pihole
+  namespace: pihole
+  labels:
+    app: pihole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pihole
+  template:
+    metadata:
+      labels:
+        app: pihole
+    spec:
+      containers:
+      - name: pihole
+        image: pihole/pihole:latest
+        ports:
+        - containerPort: 53
+          protocol: TCP
+        - containerPort: 80
+          protocol: TCP
+        - containerPort: 443
+          protocol: TCP
+        env:
+        - name: ServerIP
+          value: "0.0.0.0"
+        - name: WEBPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pihole-secret
+              key: WEBPASSWORD
+        volumeMounts:
+        - name: pihole1-storage
+          mountPath: /etc/pihole
+        - name: pihole2-storage
+          mountPath: /etc/dnsmasq.d
+      volumes:
+      - name: pihole1-storage
+        persistentVolumeClaim:
+          claimName: pihole1-pvc
+      - name: pihole2-storage
+        persistentVolumeClaim:
+          claimName: pihole2-pvc
+---
