@@ -34,7 +34,10 @@ spec:
         - name: TZ
           value: "Europe/Brussels"
         - name: USER_NAME
-          value: "user"
+          valueFrom:
+            secretKeyRef:
+              name: sshserver001-secret
+              key: user
         - name: USER_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -46,9 +49,9 @@ spec:
           value: "true"
         resources:
           limits:
-            memory: "256Mi"
-            cpu: "500m"
-          requests:
             memory: "128Mi"
             cpu: "250m"
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
 ---
