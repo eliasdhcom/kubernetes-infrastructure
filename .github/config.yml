@@ -3,4 +3,4 @@
 # @see https://eliasdh.com #
 # @since 24/11/2024        #
 ############################
-**/*/Secret.yaml
+blank_issues_enabled: false # Disable blank issues

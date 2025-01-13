@@ -8,7 +8,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress
-  namespace: webserver002
+  namespace: webserver004
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/ingress.class: "nginx"
@@ -18,17 +18,30 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - app.levelup.be
-      secretName: applevelup-tls
+      - tereiken.be
+      secretName: tereiken-tls
+    - hosts:
+      - www.tereiken.be
+      secretName: wwwtereiken-tls
   rules:
-    - host: app.levelup.be
+    - host: tereiken.be
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver002-service
+                name: webserver004-service
+                port:
+                  number: 80
+    - host: www.tereiken.be
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver004-service
                 port:
                   number: 80
 ---

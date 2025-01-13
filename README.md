@@ -33,6 +33,7 @@ Please also see following documents:
     3. [Setup Kubernetes](Documentation/Setup-Kubernetes.md).
     4. [Setup The Proxy Server For The Master Nodes](Documentation/Setup-Proxy.md).
     5. [Setup The Clusters For The Supercluster](Documentation/Setup-Clusters.md).
+    6. [Setup The Kubernetes Secrets](Documentation/Setup-Secrets.md).
 
 - Setup Cluster Infrastructure:
     1. [Setup Cert Manager](Documentation/Setup-CertManager.md).

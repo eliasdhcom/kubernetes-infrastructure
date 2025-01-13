@@ -7,21 +7,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver001-deployment
-  namespace: webserver001
+  name: webserver004-deployment
+  namespace: webserver004
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webserver001
+      app: webserver004
   template:
     metadata:
       labels:
-        app: webserver001
+        app: webserver004
     spec:
       containers:
-        - name: webserver001-container
-          image: "ghcr.io/eliasdh-com/eliasdhcom-frontend:latest"
+        - name: webserver004-container
+          image: "ghcr.io/eliasdh-com/tereikenbe-frontend:latest"
           ports:
           - containerPort: 8080
           resources:
