@@ -11,7 +11,7 @@ metadata:
   labels:
     name: webserver003
     app: webserver003
-    owner: "Ter Eiken Sport"
+    owner: Ter_Eiken_Sport
     environment: production
   annotations:
     description: This namespace is used for the webserver003 application.

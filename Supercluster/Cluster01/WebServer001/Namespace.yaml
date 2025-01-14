@@ -11,7 +11,7 @@ metadata:
   labels:
     name: webserver001
     app: webserver001
-    owner: "EliasDH"
+    owner: EliasDH
     environment: production
   annotations:
     description: This namespace is used for the webserver001 application.
