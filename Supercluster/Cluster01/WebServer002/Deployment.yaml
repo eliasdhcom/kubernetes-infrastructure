@@ -4,3 +4,59 @@
 # @since 24/11/2024        #
 ############################
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver002-frontend-deployment
+  namespace: webserver002
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webserver002
+  template:
+    metadata:
+      labels:
+        app: webserver002
+    spec:
+      containers:
+        - name: webserver002-frontend-container
+          image: "ghcr.io/eliasdh-com/applevelupbe-frontend:latest"
+          ports:
+          - containerPort: 8080
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver002-backend-deployment
+  namespace: webserver002
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webserver002
+  template:
+    metadata:
+      labels:
+        app: webserver002
+    spec:
+      containers:
+        - name: webserver002-backend-container
+          image: "ghcr.io/eliasdh-com/applevelupbe-backend:latest"
+          ports:
+          - containerPort: 3000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "1"
+---

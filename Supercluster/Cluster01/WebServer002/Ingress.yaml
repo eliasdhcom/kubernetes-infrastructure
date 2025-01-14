@@ -28,7 +28,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver002-service
+                name: webserver002-frontend-service
                 port:
                   number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver002-backend-service
+                port:
+                  number: 3000
 ---
