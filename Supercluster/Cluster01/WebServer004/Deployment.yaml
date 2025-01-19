@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: webserver004-container
-          image: "ghcr.io/eliasdh-com/tereikenbe-frontend:latest"
+          image: "ghcr.io/eliasdh-com/levelupbe-frontend:latest"
           ports:
           - containerPort: 8080
           resources:

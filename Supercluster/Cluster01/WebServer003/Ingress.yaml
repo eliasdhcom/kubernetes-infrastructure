@@ -18,30 +18,24 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - levelup.be
-      secretName: levelup-tls
-    - hosts:
-      - www.levelup.be
-      secretName: wwwlevelup-tls
+      - app.levelup.be
+      secretName: applevelup-tls
   rules:
-    - host: levelup.be
+    - host: app.levelup.be
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver003-service
+                name: webserver003-frontend-service
                 port:
                   number: 80
-    - host: www.levelup.be
-      http:
-        paths:
-          - path: /
+          - path: /api
             pathType: Prefix
             backend:
               service:
-                name: webserver003-service
+                name: webserver003-backend-service
                 port:
-                  number: 80
+                  number: 3000
 ---
