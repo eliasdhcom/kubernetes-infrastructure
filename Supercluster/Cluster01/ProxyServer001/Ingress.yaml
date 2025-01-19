@@ -1,0 +1,34 @@
+############################
+# @author Elias De Hondt   #
+# @see https://eliasdh.com #
+# @since 24/11/2024        #
+############################
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: proxyserver001
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - app.levelup.be
+      secretName: applevelup-tls
+  rules:
+    - host: app.levelup.be
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: proxyserver001-service
+                port:
+                  number: 80
+---
