@@ -5,16 +5,16 @@
 ############################
 ---
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
-  name: letsencrypt-prod
-  namespace: webserver005
+  name: webserver004-letsencrypt-issuer
+  namespace: webserver004
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: elias.dehondt@outlook.com
     privateKeySecretRef:
-      name: letsencrypt-prod-key
+      name: webserver004-letsencrypt-issuer-key
     solvers:
       - http01:
           ingress:
