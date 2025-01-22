@@ -7,8 +7,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: proxyserver001-service
-  namespace: proxyserver001
+  name: proxyserver002-service
+  namespace: proxyserver002
 spec:
   type: ExternalName
   externalName: 192.168.1.103

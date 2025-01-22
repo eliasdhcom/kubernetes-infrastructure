@@ -7,16 +7,16 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: proxyserver001-letsencrypt-issuer
-  namespace: proxyserver001
+  name: proxyserver002-letsencrypt-issuer
+  namespace: proxyserver002
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: elias.dehondt@outlook.com
     privateKeySecretRef:
-      name: proxyserver001-letsencrypt-issuer-key
+      name: proxyserver002-letsencrypt-issuer-key
     solvers:
       - http01:
           ingress:
-            class: nginx
+            ingressClassName: nginx
 ---
