@@ -41,6 +41,8 @@ Please also see following documents:
     3. [Setup Nginx Ingress](Documentation/Setup-NginxIngress.md).
     4. [Setup Longhorn](Documentation/Setup-Longhorn.md).
 
+- Testing: [Testing The Supercluster](Documentation/Testing-Supercluster.md).
+
 ## 🌌Supercluster Design
 
 ### 🌌Cluster 01
