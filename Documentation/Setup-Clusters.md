@@ -136,7 +136,19 @@ helm install cilium cilium/cilium --version 1.16.1 \
 watch kubectl get pods -n kube-system # Press Ctrl+C to exit
 ```
 
-### 👉Step 8: Check the status of the nodes
+### 👉Step 8: Set up custom DNS records
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Coredns/ConfigMap.yaml # For cluster01
+
+kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Coredns/ConfigMap.yaml # For cluster02
+
+kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Coredns/ConfigMap.yaml # For cluster03
+
+kubectl rollout restart deployment coredns -n kube-system
+```
+
+### 👉Step 9: Check the status of the nodes
 
 ```bash
 watch kubectl get nodes -o wide # Press Ctrl+C to exit

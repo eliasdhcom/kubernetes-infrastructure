@@ -23,13 +23,16 @@ This document contains some interesting test commands.
 kubectl run -i --tty --rm network-test --image=debian --restart=Never -- bash
 
 apt-get update && apt upgrade -y
-apt-get install dnsutils iputils-ping -y
+apt-get install dnsutils iputils-ping curl -y
+
+dig eliasdh.com
+dig google.com
 
 ping eliasdh.com
 ping google.com
 
-dig eliasdh.com
-dig google.com
+curl eliasdh.com
+curl google.com
 
 exit
 ```
