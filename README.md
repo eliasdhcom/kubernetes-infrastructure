@@ -48,50 +48,50 @@ Please also see following documents:
 ### 🌌Cluster 01
 
 - Nodes:
-    | ID  | Name    | Cluster   | Roll    | IP        | CPU | RAM   | Disk | OS               |
-    | --- | ------- | --------- | ------- | --------- | --- | ----- | -----| -----------------|
-    | 001 | node01  | cluster01 | Master  | 10.1.0.1  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 002 | node02  | cluster01 | Master  | 10.1.0.2  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 003 | node03  | cluster01 | Master  | 10.1.0.3  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 004 | node04  | cluster01 | Worker  | 10.1.0.4  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 005 | node05  | cluster01 | Worker  | 10.1.0.5  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 006 | node06  | cluster01 | Worker  | 10.1.0.6  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 007 | node07  | cluster01 | Worker  | 10.1.0.7  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 008 | node08  | cluster01 | Worker  | 10.1.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 009 | node09  | cluster01 | Worker  | 10.1.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 010 | proxy01 | cluster01 | Worker  | 10.1.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
+    | ID  | Name    | Cluster   | Roll   | IP        | CPU | RAM   | Disk | OS               |
+    | --- | ------- | --------- | ------ | --------- | --- | ----- | -----| -----------------|
+    | 001 | node01  | cluster01 | Master | 10.1.0.1  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 002 | node02  | cluster01 | Master | 10.1.0.2  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 003 | node03  | cluster01 | Master | 10.1.0.3  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 004 | node04  | cluster01 | Worker | 10.1.0.4  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 005 | node05  | cluster01 | Worker | 10.1.0.5  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 006 | node06  | cluster01 | Worker | 10.1.0.6  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 007 | node07  | cluster01 | Worker | 10.1.0.7  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 008 | node08  | cluster01 | Worker | 10.1.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 009 | node09  | cluster01 | Worker | 10.1.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 010 | proxy01 | cluster01 | None   | 10.1.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
 
 ### 🌌Cluster 02
 
 - Nodes:
-    | ID  | Name    | Cluster   | Roll    | IP        | CPU | RAM   | Disk | OS               |
-    | --- | ------- | --------- | ------- | --------- | --- | ----- | -----| -----------------|
-    | 011 | node11  | cluster02 | Master  | 10.2.0.1  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 012 | node12  | cluster02 | Master  | 10.2.0.2  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 013 | node13  | cluster02 | Master  | 10.2.0.3  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 014 | node14  | cluster02 | Worker  | 10.2.0.4  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 015 | node15  | cluster02 | Worker  | 10.2.0.5  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 016 | node16  | cluster02 | Worker  | 10.2.0.6  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 017 | node17  | cluster02 | Worker  | 10.2.0.7  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 018 | node18  | cluster02 | Worker  | 10.2.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 019 | node19  | cluster02 | Worker  | 10.2.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 020 | proxy02 | cluster02 | Worker  | 10.2.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
+    | ID  | Name    | Cluster   | Roll   | IP        | CPU | RAM   | Disk | OS               |
+    | --- | ------- | --------- | ------ | --------- | --- | ----- | -----| -----------------|
+    | 011 | node11  | cluster02 | Master | 10.2.0.1  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 012 | node12  | cluster02 | Master | 10.2.0.2  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 013 | node13  | cluster02 | Master | 10.2.0.3  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 014 | node14  | cluster02 | Worker | 10.2.0.4  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 015 | node15  | cluster02 | Worker | 10.2.0.5  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 016 | node16  | cluster02 | Worker | 10.2.0.6  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 017 | node17  | cluster02 | Worker | 10.2.0.7  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 018 | node18  | cluster02 | Worker | 10.2.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 019 | node19  | cluster02 | Worker | 10.2.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 020 | proxy02 | cluster02 | None   | 10.2.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
 
 ### 🌌Cluster 03
 
 - Nodes:
-    | ID  | Name    | Cluster   | Roll    | IP        | CPU | RAM   | Disk | OS               |
-    | --- | ------- | --------- | ------- | --------- | --- | ----- | -----| -----------------|
-    | 021 | node31  | cluster03 | Master  | 10.3.0.1  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 022 | node32  | cluster03 | Master  | 10.3.0.2  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 023 | node33  | cluster03 | Master  | 10.3.0.3  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 024 | node34  | cluster03 | Worker  | 10.3.0.4  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 025 | node35  | cluster03 | Worker  | 10.3.0.5  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 026 | node36  | cluster03 | Worker  | 10.3.0.6  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 027 | node37  | cluster03 | Worker  | 10.3.0.7  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 028 | node38  | cluster03 | Worker  | 10.3.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 029 | node39  | cluster03 | Worker  | 10.3.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
-    | 030 | proxy03 | cluster03 | Worker  | 10.3.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
+    | ID  | Name    | Cluster   | Roll   | IP        | CPU | RAM   | Disk | OS               |
+    | --- | ------- | --------- | ------ | --------- | --- | ----- | -----| -----------------|
+    | 021 | node31  | cluster03 | Master | 10.3.0.1  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 022 | node32  | cluster03 | Master | 10.3.0.2  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 023 | node33  | cluster03 | Master | 10.3.0.3  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 024 | node34  | cluster03 | Worker | 10.3.0.4  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 025 | node35  | cluster03 | Worker | 10.3.0.5  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 026 | node36  | cluster03 | Worker | 10.3.0.6  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 027 | node37  | cluster03 | Worker | 10.3.0.7  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 028 | node38  | cluster03 | Worker | 10.3.0.8  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 029 | node39  | cluster03 | Worker | 10.3.0.9  | 16  | 64GB  | 8TB  | Ubuntu 24.04 LTS |
+    | 030 | proxy03 | cluster03 | None   | 10.3.0.10 | 1   | 1GB   | 0KB  | Ubuntu 24.04 LTS |
 
 ## 🖥️Interesting tools to manage your clusters
 

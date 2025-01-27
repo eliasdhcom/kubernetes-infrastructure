@@ -122,6 +122,12 @@ kubectl label node node02 longhorn.io/target=true
 kubectl label node node03 longhorn.io/target=true
 ```
 
+```bash
+kubectl label node node01 node-role.kubernetes.io/longhorn=true
+kubectl label node node02 node-role.kubernetes.io/longhorn=true
+kubectl label node node03 node-role.kubernetes.io/longhorn=true
+```
+
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
