@@ -1,7 +1,7 @@
 ############################
-# @author Elias De Hondt   #
+# @author EliasDH Team     #
 # @see https://eliasdh.com #
-# @since 24/11/2024        #
+# @since 01/01/2025        #
 ############################
 name: Validate
 
@@ -17,20 +17,15 @@ jobs:
   lint-yaml:
     name: Lint YAML Files
     runs-on: ubuntu-latest
-
     permissions:
       contents: read
       packages: read
       statuses: write
-
     steps:
-      # Step 1
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      # Step 2
       - name: Lint YAML Files
         uses: super-linter/super-linter@v7.2.0
         env:
@@ -42,23 +37,31 @@ jobs:
     name: Validate Kubernetes Manifests
     runs-on: ubuntu-latest
     needs: lint-yaml
-
     steps:
-      # Step 1
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      # Step 2
       - name: Install kubectl
         uses: azure/setup-kubectl@v3
         with:
           version: 'v1.28.0'
-
-      # Step 3
-      - name: Validate Kubernetes YAML
+      - name: Validate Kubernetes YAML Cluster01
         run: |
           # Test all YAML files under 'Cluster01/' for syntax errors
           for file in $(find cluster01 -name '*.yaml'); do
+            echo "Validating $file"
+            kubectl apply --dry-run=client -f $file
+          done
+      - name: Validate Kubernetes YAML Cluster02
+        run: |
+          # Test all YAML files under 'Cluster02/' for syntax errors
+          for file in $(find cluster02 -name '*.yaml'); do
+            echo "Validating $file"
+            kubectl apply --dry-run=client -f $file
+          done
+      - name: Validate Kubernetes YAML Cluster03
+        run: |
+          # Test all YAML files under 'Cluster03/' for syntax errors
+          for file in $(find cluster03 -name '*.yaml'); do
             echo "Validating $file"
             kubectl apply --dry-run=client -f $file
           done

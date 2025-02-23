@@ -128,7 +128,6 @@ kubectl label node node02 node-role.kubernetes.io/longhorn=true
 kubectl label node node03 node-role.kubernetes.io/longhorn=true
 ```
 
-
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
 - 📫 How to reach us elias.dehondt@outlook.com

@@ -24,6 +24,7 @@ Please also see following documents:
 - [LICENSE](LICENSE.md)
 - [SECURITY](SECURITY.md)
 - [CONTRIBUTING](CONTRIBUTING.md)
+- [CODE OF CONDUCT](CODE-OF-CONDUCT.md)
 
 ## 📚Documentation
 

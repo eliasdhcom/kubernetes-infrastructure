@@ -88,9 +88,9 @@ sudo nano /etc/keepalived/check_apiserver.sh
 ```bash
 #!/bin/sh
 ############################
-# @author Elias De Hondt   #
+# @author EliasDH Team     #
 # @see https://eliasdh.com #
-# @since 24/11/2024        #
+# @since 01/01/2025        #
 ############################
 
 errorExit() {
