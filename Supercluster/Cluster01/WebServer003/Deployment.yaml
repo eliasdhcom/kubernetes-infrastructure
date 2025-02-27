@@ -22,6 +22,7 @@ spec:
       containers:
         - name: webserver003-frontend-container
           image: "ghcr.io/eliasdh-com/applevelupbe-frontend:latest"
+          imagePullPolicy: Always
           ports:
           - containerPort: 8080
           resources:
@@ -50,6 +51,7 @@ spec:
       containers:
         - name: webserver003-backend-container
           image: "ghcr.io/eliasdh-com/applevelupbe-backend:latest"
+          imagePullPolicy: Always
           ports:
           - containerPort: 3000
           resources:
