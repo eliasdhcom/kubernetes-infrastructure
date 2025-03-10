@@ -7,7 +7,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pihole
+  name: pihole-deployment
   namespace: pihole
   labels:
     app: pihole
@@ -37,6 +37,13 @@ spec:
             secretKeyRef:
               name: pihole-secret
               key: WEBPASSWORD
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
         volumeMounts:
         - name: pihole1-storage
           mountPath: /etc/pihole

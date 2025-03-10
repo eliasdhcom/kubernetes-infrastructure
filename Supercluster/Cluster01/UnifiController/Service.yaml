@@ -1,0 +1,43 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unificontroller-service
+  namespace: unifi
+spec:
+  selector:
+    app: unificontroller
+  externalTrafficPolicy: Local
+  ports:
+    - port: 8443
+      targetPort: 8443
+      protocol: TCP
+      name: https
+    - port: 3478
+      targetPort: 3478
+      protocol: UDP
+      name: stun
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      name: inform
+    - port: 10001
+      targetPort: 10001
+      protocol: UDP
+      name: discovery
+    - port: 1900
+      targetPort: 1900
+      protocol: UDP
+      name: upnp
+    - port: 6789
+      targetPort: 6789
+      protocol: TCP
+      name: speedtest
+  type: LoadBalancer
+  loadBalancerIP: 192.168.1.121
+---

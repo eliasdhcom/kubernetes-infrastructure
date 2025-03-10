@@ -1,0 +1,52 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unificontroller-deployment
+  namespace: unifi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unificontroller
+  template:
+    metadata:
+      labels:
+        app: unificontroller
+    spec:
+      containers:
+        - name: unifi
+          image: jacobalberty/unifi:latest
+          ports:
+            - containerPort: 8443
+              name: https
+            - containerPort: 3478
+              name: stun
+            - containerPort: 8080
+              name: inform
+            - containerPort: 10001
+              name: discovery
+            - containerPort: 1900
+              name: upnp
+            - containerPort: 6789
+              name: speedtest
+          volumeMounts:
+            - mountPath: "/unifi"
+              name: unificontroller-storage
+          resources:
+            limits:
+              memory: "2Gi"
+              cpu: "1000m"
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+      volumes:
+        - name: unificontroller-storage
+          persistentVolumeClaim:
+            claimName: unificontroller-pvc
+---

@@ -26,12 +26,12 @@ spec:
           ports:
           - containerPort: 8080
           resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
             limits:
               memory: "128Mi"
               cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -55,10 +55,10 @@ spec:
           ports:
           - containerPort: 3000
           resources:
-            requests:
+            limits:
               memory: "128Mi"
               cpu: "500m"
-            limits:
-              memory: "256Mi"
-              cpu: "1"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
 ---
