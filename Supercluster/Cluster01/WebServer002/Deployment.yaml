@@ -19,6 +19,8 @@ spec:
       labels:
         app: webserver002
     spec:
+      imagePullSecrets:
+        - name: github-registry
       containers:
         - name: webserver002-container
           image: "ghcr.io/eliasdh-com/displaylevelupbe-frontend:latest"
