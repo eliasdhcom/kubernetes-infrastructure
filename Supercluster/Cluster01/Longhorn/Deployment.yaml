@@ -43,30 +43,30 @@ spec:
           - --manager-url
           - http://longhorn-backend:9500/v1
           env:
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          - name: NODE_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.nodeName
-          - name: SERVICE_ACCOUNT
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.serviceAccountName
-          - name: CSI_ATTACHER_IMAGE
-            value: "longhornio/csi-attacher:v4.7.0"
-          - name: CSI_PROVISIONER_IMAGE
-            value: "longhornio/csi-provisioner:v4.0.1-20241007"
-          - name: CSI_NODE_DRIVER_REGISTRAR_IMAGE
-            value: "longhornio/csi-node-driver-registrar:v2.12.0"
-          - name: CSI_RESIZER_IMAGE
-            value: "longhornio/csi-resizer:v1.12.0"
-          - name: CSI_SNAPSHOTTER_IMAGE
-            value: "longhornio/csi-snapshotter:v7.0.2-20241007"
-          - name: CSI_LIVENESS_PROBE_IMAGE
-            value: "longhornio/livenessprobe:v2.14.0"
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: SERVICE_ACCOUNT
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.serviceAccountName
+            - name: CSI_ATTACHER_IMAGE
+              value: "longhornio/csi-attacher:v4.7.0"
+            - name: CSI_PROVISIONER_IMAGE
+              value: "longhornio/csi-provisioner:v4.0.1-20241007"
+            - name: CSI_NODE_DRIVER_REGISTRAR_IMAGE
+              value: "longhornio/csi-node-driver-registrar:v2.12.0"
+            - name: CSI_RESIZER_IMAGE
+              value: "longhornio/csi-resizer:v1.12.0"
+            - name: CSI_SNAPSHOTTER_IMAGE
+              value: "longhornio/csi-snapshotter:v7.0.2-20241007"
+            - name: CSI_LIVENESS_PROBE_IMAGE
+              value: "longhornio/livenessprobe:v2.14.0"
           resources:
             limits:
               memory: "512Mi"
@@ -106,47 +106,47 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 1
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - longhorn-ui
-              topologyKey: kubernetes.io/hostname
+            - weight: 1
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                      - longhorn-ui
+                topologyKey: kubernetes.io/hostname
       containers:
-      - name: longhorn-ui
-        image: longhornio/longhorn-ui:v1.7.2
-        imagePullPolicy: IfNotPresent
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-        volumeMounts:
+        - name: longhorn-ui
+          image: longhornio/longhorn-ui:v1.7.2
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+      volumeMounts:
         - name : nginx-cache
           mountPath: /var/cache/nginx/
         - name : nginx-config
           mountPath: /var/config/nginx/
         - name: var-run
           mountPath: /var/run/
-        ports:
+      ports:
         - containerPort: 8000
           name: http
-        env:
-          - name: LONGHORN_MANAGER_IP
-            value: "http://longhorn-backend:9500"
-          - name: LONGHORN_UI_PORT
-            value: "8000"
+      env:
+        - name: LONGHORN_MANAGER_IP
+          value: "http://longhorn-backend:9500"
+        - name: LONGHORN_UI_PORT
+          value: "8000"
       volumes:
-      - emptyDir: {}
-        name: nginx-cache
-      - emptyDir: {}
-        name: nginx-config
-      - emptyDir: {}
-        name: var-run
+        - emptyDir: {}
+          name: nginx-cache
+        - emptyDir: {}
+          name: nginx-config
+        - emptyDir: {}
+          name: var-run
       priorityClassName: "longhorn-critical"
 ---

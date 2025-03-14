@@ -22,38 +22,38 @@ spec:
         app: pihole
     spec:
       containers:
-      - name: pihole
-        image: pihole/pihole:latest
-        ports:
-        - containerPort: 53
-          protocol: TCP
-        - containerPort: 80
-          protocol: TCP
-        env:
-        - name: ServerIP
-          value: "0.0.0.0"
-        - name: WEBPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: pihole-secret
-              key: WEBPASSWORD
-        resources:
-          limits:
-            memory: "256Mi"
-            cpu: "1000m"
-          requests:
-            memory: "128Mi"
-            cpu: "500m"
-        volumeMounts:
-        - name: pihole1-storage
-          mountPath: /etc/pihole
-        - name: pihole2-storage
-          mountPath: /etc/dnsmasq.d
+        - name: pihole
+          image: pihole/pihole:latest
+          ports:
+            - containerPort: 53
+              protocol: TCP
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: ServerIP
+              value: "0.0.0.0"
+            - name: WEBPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pihole-secret
+                  key: WEBPASSWORD
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "1000m"
+            requests:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: pihole1-storage
+              mountPath: /etc/pihole
+            - name: pihole2-storage
+              mountPath: /etc/dnsmasq.d
       volumes:
-      - name: pihole1-storage
-        persistentVolumeClaim:
-          claimName: pihole1-pvc
-      - name: pihole2-storage
-        persistentVolumeClaim:
-          claimName: pihole2-pvc
+        - name: pihole1-storage
+          persistentVolumeClaim:
+            claimName: pihole1-pvc
+        - name: pihole2-storage
+          persistentVolumeClaim:
+            claimName: pihole2-pvc
 ---

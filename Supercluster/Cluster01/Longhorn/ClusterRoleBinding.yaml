@@ -16,9 +16,9 @@ roleRef:
   kind: ClusterRole
   name: longhorn-role
 subjects:
-- kind: ServiceAccount
-  name: longhorn-service-account
-  namespace: longhorn-system
+  - kind: ServiceAccount
+    name: longhorn-service-account
+    namespace: longhorn-system
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -33,7 +33,7 @@ roleRef:
   kind: ClusterRole
   name: cluster-admin
 subjects:
-- kind: ServiceAccount
-  name: longhorn-support-bundle
-  namespace: longhorn-system
+  - kind: ServiceAccount
+    name: longhorn-support-bundle
+    namespace: longhorn-system
 ---

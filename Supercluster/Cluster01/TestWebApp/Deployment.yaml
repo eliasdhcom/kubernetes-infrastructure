@@ -20,22 +20,22 @@ spec:
         app: testwebapp
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-        volumeMounts:
-        - name: testwebapp-volume
-          mountPath: /usr/share/nginx/html
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+          volumeMounts:
+          - name: testwebapp-volume
+            mountPath: /usr/share/nginx/html
       volumes:
-      - name: testwebapp-volume
-        configMap:
-          name: testwebapp-configmap
+        - name: testwebapp-volume
+          configMap:
+            name: testwebapp-configmap
 ---

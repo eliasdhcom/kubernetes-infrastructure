@@ -22,9 +22,11 @@ This document provides a step-by-step guide to setting up `Kubernetes Secrets` o
 
 ```bash
 kubectl create secret docker-registry github-registry \
-    --docker-server=https://ghcr.io \
-    --docker-username=<username> \
-    --docker-password=<access_token>
+  --docker-server=ghcr.io \
+  --docker-username=<username> \
+  --docker-password=<access_token> \
+  --docker-email=<email> \
+  --namespace=default
 ```
 
 ### 👉Step 2: Create a GitHub Secrets
@@ -34,7 +36,8 @@ kubectl create secret docker-registry gitlab-registry \
     --docker-server=registry.gitlab.com \
     --docker-username=<username> \
     --docker-password=<access_token> \
-    --docker-email=<email>
+    --docker-email=<email> \
+    --namespace=default
 ```
 
 ## 🔗Links

@@ -22,36 +22,36 @@ spec:
         app: sshserver001
     spec:
       containers:
-      - name: sshserver001-container
-        image: lscr.io/linuxserver/openssh-server:latest
-        ports:
-        - containerPort: 2222
-        env:
-        - name: PUID
-          value: "1000"
-        - name: PGID
-          value: "1000"
-        - name: TZ
-          value: "Europe/Brussels"
-        - name: USER_NAME
-          valueFrom:
-            secretKeyRef:
-              name: sshserver001-secret
-              key: user
-        - name: USER_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: sshserver001-secret
-              key: password
-        - name: PASSWORD_ACCESS
-          value: "true"
-        - name: SUDO_ACCESS
-          value: "true"
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "250m"
-          requests:
-            memory: "64Mi"
-            cpu: "100m"
+        - name: sshserver001-container
+          image: lscr.io/linuxserver/openssh-server:latest
+          ports:
+            - containerPort: 2222
+          env:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: TZ
+            value: "Europe/Brussels"
+          - name: USER_NAME
+            valueFrom:
+              secretKeyRef:
+                name: sshserver001-secret
+                key: user
+          - name: USER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: sshserver001-secret
+                key: password
+          - name: PASSWORD_ACCESS
+            value: "true"
+          - name: SUDO_ACCESS
+            value: "true"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
 ---

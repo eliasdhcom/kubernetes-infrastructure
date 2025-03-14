@@ -19,9 +19,9 @@ spec:
   selector:
     app: longhorn-manager
   ports:
-  - name: manager
-    port: 9500
-    targetPort: manager
+    - name: manager
+      port: 9500
+      targetPort: manager
 ---
 kind: Service
 apiVersion: v1
@@ -38,10 +38,10 @@ spec:
   selector:
     app: longhorn-ui
   ports:
-  - name: http
-    port: 80
-    targetPort: http
-    nodePort: null
+    - name: http
+      port: 80
+      targetPort: http
+      nodePort: null
 ---
 apiVersion: v1
 kind: Service
@@ -58,9 +58,9 @@ spec:
   selector:
     longhorn.io/conversion-webhook: longhorn-conversion-webhook
   ports:
-  - name: conversion-webhook
-    port: 9501
-    targetPort: conversion-wh
+    - name: conversion-webhook
+      port: 9501
+      targetPort: conversion-wh
 ---
 apiVersion: v1
 kind: Service
@@ -77,9 +77,9 @@ spec:
   selector:
     longhorn.io/admission-webhook: longhorn-admission-webhook
   ports:
-  - name: admission-webhook
-    port: 9502
-    targetPort: admission-wh
+    - name: admission-webhook
+      port: 9502
+      targetPort: admission-wh
 ---
 apiVersion: v1
 kind: Service
@@ -96,7 +96,7 @@ spec:
   selector:
     longhorn.io/recovery-backend: longhorn-recovery-backend
   ports:
-  - name: recovery-backend
-    port: 9503
-    targetPort: recov-backend
+    - name: recovery-backend
+      port: 9503
+      targetPort: recov-backend
 ---
