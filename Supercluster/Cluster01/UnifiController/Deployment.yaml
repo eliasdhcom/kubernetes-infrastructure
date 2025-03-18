@@ -19,6 +19,15 @@ spec:
       labels:
         app: unificontroller
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - compute
       containers:
         - name: unifi
           image: jacobalberty/unifi:latest

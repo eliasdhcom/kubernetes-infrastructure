@@ -19,6 +19,15 @@ spec:
       labels:
         app: webserver001
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - compute
       imagePullSecrets:
         - name: github-registry
       containers:

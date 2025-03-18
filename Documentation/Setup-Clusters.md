@@ -148,7 +148,25 @@ kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructur
 kubectl rollout restart deployment coredns -n kube-system
 ```
 
-### 👉Step 9: Check the status of the nodes
+### 👉Step 9: Label the nodes
+
+```bash
+kubectl label nodes node01 role=control-plane
+kubectl label nodes node02 role=control-plane
+kubectl label nodes node03 role=control-plane
+kubectl label nodes node04 role=compute
+kubectl label nodes node05 role=compute
+kubectl label nodes node06 role=compute
+kubectl label nodes node07 role=compute
+kubectl label nodes node08 role=compute
+kubectl label nodes node09 role=compute
+```
+
+```bash
+kubectl get nodes --show-labels
+```
+
+### 👉Step 10: Check the status of the nodes
 
 ```bash
 watch kubectl get nodes -o wide # Press Ctrl+C to exit
