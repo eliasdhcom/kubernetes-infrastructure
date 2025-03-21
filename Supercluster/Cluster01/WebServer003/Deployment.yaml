@@ -59,6 +59,15 @@ spec:
       labels:
         app: webserver003
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - compute
       containers:
         - name: webserver003-backend-container
           image: "ghcr.io/eliasdh-com/applevelupbe-backend:latest"
