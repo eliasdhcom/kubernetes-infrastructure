@@ -7,10 +7,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: proxyserver002-ingress
-  namespace: proxyserver002
+  name: proxyserver001-ingress
+  namespace: proxyserver001
   annotations:
-    cert-manager.io/issuer: "proxyserver002-letsencrypt-issuer"
+    cert-manager.io/issuer: "proxyserver001-letsencrypt-issuer"
     nginx.ingress.kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -29,7 +29,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: proxyserver002-service
+                name: proxyserver001-service
                 port:
                   number: 80
 ---
