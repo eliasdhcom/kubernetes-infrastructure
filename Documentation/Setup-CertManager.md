@@ -22,7 +22,7 @@ This document provides a step-by-step guide to setting up the `Cert Manager` on 
 
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.3/cert-manager.yaml
-# kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.3/cert-manager.yaml
+# kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.3/cert-manager.yaml
 ```
 
 ### 👉Step 2: Check if the pods are running

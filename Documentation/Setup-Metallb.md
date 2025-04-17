@@ -10,9 +10,8 @@
     2. [👉Step 2: To install MetalLB apply the manifest](#👉step-2-to-install-metallb-apply-the-manifest)
     3. [👉Step 3: Check if the pods are running](#👉step-3-check-if-the-pods-are-running)
     4. [👉Step 4: Set the IP range for the Load Balancer](#👉step-4-set-the-ip-range-for-the-load-balancer)
-    5. [👉Step 5: Check if the IP range is set](#👉step-5-check-if-the-ip-range-is-set)
-    6. [👉Step 6: Set the L2 Advertisement](#👉step-6-set-the-l2-advertisement)
-    7. [👉Step 7: Check if the L2 Advertisement is set](#👉step-7-check-if-the-l2-advertisement-is-set)
+    6. [👉Step 5: Set the L2 Advertisement](#👉step-6-set-the-l2-advertisement)
+    7. [👉Step 6: Check if the L2 Advertisement is set](#👉step-7-check-if-the-l2-advertisement-is-set)
 4. [🔗Links](#🔗links)
 
 ---
@@ -58,13 +57,7 @@ kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructur
 kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Metallb/IPAddressPool.yaml
 ```
 
-### 👉Step 5: Check if the IP range is set
-
-```bash
-kubectl get addresspool -n metallb-system
-```
-
-### 👉Step 6: Set the L2 Advertisement
+### 👉Step 5: Set the L2 Advertisement
 
 ```bash
 # Cluster 01
@@ -77,7 +70,7 @@ kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructur
 kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Metallb/L2Advertisement.yaml
 ```
 
-### 👉Step 7: Check if the L2 Advertisement is set
+### 👉Step 6: Check if the L2 Advertisement is set
 
 ```bash
 kubectl get l2advertisement -n metallb-system

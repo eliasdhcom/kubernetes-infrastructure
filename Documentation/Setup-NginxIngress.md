@@ -7,6 +7,7 @@
 2. [🖖Introduction](#🖖introduction)
 3. [✨Steps](#✨steps)
     1. [👉Step 1: Preparation](#👉step-1-preparation)
+    2. [👉Step 2: Check if the pods are running](#👉step-2-check-if-the-pods-are-running)
 4. [🔗Links](#🔗links)
 
 ---
@@ -22,6 +23,12 @@ This document provides a step-by-step guide to setting up the `Nginx Ingress` on
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 # kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+```
+
+### 👉Step 2: Check if the pods are running
+
+```bash
+watch kubectl get pods -n ingress-nginx # CTRL+C to exit
 ```
 
 ## 🔗Links

@@ -39,6 +39,12 @@ sudo kubeadm init --config https://raw.githubusercontent.com/EliasDH-com/K8s-Inf
 
 > **Note:** Copy the kubeadm join commands for the worker nodes and the master node
 
+> Or you can use the following command to get the join command:
+
+```bash
+sudo kubeadm init --control-plane-endpoint "192.168.111.201:6443" --pod-network-cidr "10.244.0.0/16" --cri-socket "unix:///run/containerd/containerd.sock" 
+```
+
 ### 👉Step 2: Copy the credentials to the user's home directory 
 
 ```bash
