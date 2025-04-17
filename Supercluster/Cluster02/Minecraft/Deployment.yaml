@@ -35,7 +35,7 @@ spec:
         - name: DIFFICULTY
           value: "normal"
         - name: MODE
-          value: "survival"
+          value: "creative"
         - name: MOTD
           value: "Welcome to EliasDH Minecraft Server"
         - name: SPAWN_PROTECTION
