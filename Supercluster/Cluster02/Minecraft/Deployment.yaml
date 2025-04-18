@@ -7,8 +7,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: minecraft-server
-  namespace: default
+  name: minecraft-deployment
+  namespace: minecraft
   labels:
     app: minecraft
 spec:
@@ -22,38 +22,38 @@ spec:
         app: minecraft
     spec:
       containers:
-      - name: minecraft
-        image: itzg/minecraft-server:latest
-        ports:
-        - containerPort: 25565
-          name: minecraft
-        env:
-        - name: EULA
-          value: "TRUE"
-        - name: MEMORY
-          value: "2G"
-        - name: DIFFICULTY
-          value: "normal"
-        - name: MODE
-          value: "creative"
-        - name: MOTD
-          value: "Welcome to EliasDH Minecraft Server"
-        - name: SPAWN_PROTECTION
-          value: "0"
-        - name: PVP
-          value: "true"
-        resources:
-          requests:
-            memory: "2Gi"
-            cpu: "1"
-          limits:
-            memory: "3Gi"
-            cpu: "2"
-        volumeMounts:
-        - name: minecraft-data
-          mountPath: /data
+        - name: minecraft
+          image: itzg/minecraft-server:latest
+          ports:
+          - containerPort: 25565
+            name: minecraft
+          env:
+          - name: EULA
+            value: "TRUE"
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+          volumeMounts:
+            - name: minecraft-data
+              mountPath: /data
+            - name: minecraft-icon
+              mountPath: /data/server-icon.png
+              subPath: server-icon.png
+            - name: minecraft-config
+              mountPath: /data/server.properties
+              subPath: server.properties
       volumes:
-      - name: minecraft-data
-        persistentVolumeClaim:
-          claimName: minecraft-pvc
+        - name: minecraft-data
+          persistentVolumeClaim:
+            claimName: minecraft-pvc
+        - name: minecraft-icon
+          configMap:
+            name: minecraft-icon
+        - name: minecraft-config
+          configMap:
+            name: minecraft-config
 ---
