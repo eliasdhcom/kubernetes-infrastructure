@@ -30,7 +30,8 @@ RUN echo "gamemode=survival" > server.properties && \
     echo "pvp=true" >> server.properties && \
     echo "spawn-protection=0" >> server.properties && \
     echo "online-mode=true" >> server.properties && \
-    echo "seed=694200000097885" >> server.properties
+    echo "seed=694200000097885" >> server.properties && \
+    echo "level-name=/data/world" >> server.properties
 
 # Download Minecraft server jar
 RUN wget https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar
@@ -43,7 +44,7 @@ RUN convert server-icon.png -resize 64x64! server-icon.png
 EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
-CMD ["java", "-Xmx1G", "-Xms1G", "-jar", "/server/server.jar", "nogui", "--world-dir", "/data/world"]
+CMD ["java", "-Xmx1G", "-Xms1G", "-jar", "/server/server.jar", "nogui"]
 
 # root
 # ├── server/                         Generated Docker Files
