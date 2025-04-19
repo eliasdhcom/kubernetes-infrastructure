@@ -17,7 +17,8 @@ RUN apt-get install -y openjdk-21-jre-headless screen imagemagick wget
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
-WORKDIR /minecraft
+RUN mkdir /server
+WORKDIR /server
 
 # Copy ops.json and server.properties configurations
 RUN echo '[{"uuid": "", "name": "EliasDehondt", "level": 4}]' > ops.json

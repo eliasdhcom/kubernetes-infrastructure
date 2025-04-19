@@ -37,7 +37,8 @@ spec:
               cpu: "2"
           volumeMounts:
             - name: minecraft-data
-              mountPath: /minecraft
+              mountPath: /data
+          workingDir: /data
       volumes:
         - name: minecraft-data
           persistentVolumeClaim:
