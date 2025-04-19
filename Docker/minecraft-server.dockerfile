@@ -44,3 +44,14 @@ EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
 CMD ["java", "-Xmx1G", "-Xms1G", "-jar", "/server/server.jar", "nogui"]
+
+
+# ├── server/                         Generated Docker Files
+# │   ├── server.jar
+# │   ├── server-icon.png
+# │   ├── eula.txt
+# │   ├── server.properties
+# │   └── ops.json
+# └── data/                           Persistent Volume Claim
+#     ├── logs/
+#     └── world/
