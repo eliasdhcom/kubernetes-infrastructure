@@ -15,33 +15,12 @@ spec:
       labels:
         app: minecraft
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
       containers:
         - name: minecraft
-          image: itzg/minecraft-server:latest
+          image: ghcr.io/eliasdh-com/minecraft-server:latest
           ports:
             - containerPort: 25565
               name: minecraft
-          env:
-            - name: EULA
-              value: "TRUE"
-            - name: MEMORY
-              value: "2G"
-            - name: DIFFICULTY
-              value: "normal"
-            - name: MODE
-              value: "creative"
-            - name: MOTD
-              value: "§a§lW§b§le§c§ll§d§lc§e§lo§f§lm§a§le §b§lt§c§lo §d§lE§e§ll§f§li§a§la§b§ls§c§lD§d§lH §e§lM§f§li§a§ln§b§le§c§lc§d§lr§e§la§f§lf§a§lt §b§lS§c§le§d§lr§e§lv§f§le§a§lr"
-            - name: SPAWN_PROTECTION
-              value: "0"
-            - name: PVP
-              value: "true"
-            - name: ONLINE_MODE
-              value: "true"
           resources:
             requests:
               memory: "2Gi"
@@ -51,15 +30,9 @@ spec:
               cpu: "2"
           volumeMounts:
             - name: minecraft-data
-              mountPath: /data
-            - name: minecraft-icon
-              mountPath: /data/server-icon.png
-              subPath: server-icon.png
+              mountPath: /minecraft
       volumes:
         - name: minecraft-data
           persistentVolumeClaim:
             claimName: minecraft-pvc
-        - name: minecraft-icon
-          configMap:
-            name: minecraft-icon
 ---

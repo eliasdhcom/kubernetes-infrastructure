@@ -23,7 +23,7 @@ WORKDIR /minecraft
 RUN echo '[{"uuid": "", "name": "EliasDehondt", "level": 4}]' > ops.json
 RUN echo "eula=true" > eula.txt
 RUN echo "gamemode=survival" > server.properties && \
-    echo "motd=Welcome to EliasDH Minecraft Server" >> server.properties && \
+    echo "§a§lW§b§le§c§ll§d§lc§e§lo§f§lm§a§le §b§lt§c§lo §d§lE§e§ll§f§li§a§la§b§ls§c§lD§d§lH §e§lM§f§li§a§ln§b§le§c§lc§d§lr§e§la§f§lf§a§lt §b§lS§c§le§d§lr§e§lv§f§le§a§lr" >> server.properties && \
     echo "max-players=100" >> server.properties && \
     echo "difficulty=normal" >> server.properties && \
     echo "pvp=true" >> server.properties && \
@@ -42,4 +42,4 @@ RUN convert server-icon.png -resize 64x64! server-icon.png
 EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
-CMD ["screen", "-DmS", "minecraft", "java", "-Xmx1G", "-Xms1G", "-jar", "server.jar", "nogui"]
+CMD ["java", "-Xmx1G", "-Xms1G", "-jar", "server.jar", "nogui"]
