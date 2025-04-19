@@ -1,3 +1,9 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,8 +22,9 @@ spec:
         app: minecraft
     spec:
       containers:
-        - name: minecraft
+        - name: minecraft-container
           image: ghcr.io/eliasdh-com/minecraft-server:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 25565
               name: minecraft
