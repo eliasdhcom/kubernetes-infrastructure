@@ -22,16 +22,7 @@ WORKDIR /minecraft
 # Copy ops.json and server.properties configurations
 RUN echo '[{"uuid": "", "name": "EliasDehondt", "level": 4}]' > ops.json && \
 echo "eula=true" > eula.txt && \
-cat << EOF > server.properties \ 
-gamemode=survival \
-motd=Welcome to EliasDH Minecraft Server \
-max-players=100 \
-difficulty=normal \
-pvp=true \
-spawn-protection=0 \
-online-mode=true \
-seed=694200000097885 \
-EOF
+cat << EOF > server.properties gamemode=survival motd=Welcome to EliasDH Minecraft Server max-players=100 difficulty=normal pvp=true spawn-protection=0 online-mode=true seed=694200000097885 EOF
 
 # Download Minecraft server jar
 RUN wget https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar
