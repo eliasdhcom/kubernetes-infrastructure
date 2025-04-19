@@ -1,0 +1,27 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+name: Build and Push Docker Image to GHCR
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-push-minecraft-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Login to GHCR
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u eliasdehondt --password-stdin
+      - name: Build/Push Docker Image
+        run: |
+          docker build --push -t ghcr.io/eliasdh-com/minecraft-server:latest ./Docker/minecraft-server.dockerfile
