@@ -43,4 +43,4 @@ RUN convert server-icon.png -resize 64x64! server-icon.png
 EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
-CMD ["java", "-Xmx1G", "-Xms1G", "-jar", "server.jar", "nogui"]
+CMD ["java", "-Xmx1G", "-Xms1G", "-jar", "/server/server.jar", "nogui"]
