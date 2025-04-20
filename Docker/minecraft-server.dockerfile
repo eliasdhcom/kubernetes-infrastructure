@@ -3,6 +3,25 @@
 # @see https://eliasdh.com #
 # @since 01/01/2025        #
 ############################
+# sudo docker pull ghcr.io/eliasdh-com/minecraft-server:latest
+# sudo docker run -d --name minecraft-server -p 25565:25565 -v minecraft-data:/data ghcr.io/eliasdh-com/minecraft-server:latest
+# sudo docker logs minecraft-server
+# sudo docker stop minecraft-server
+# sudo docker rm minecraft-server
+# sudo docker rmi ghcr.io/eliasdh-com/minecraft-server:latest
+# sudo docker volume rm minecraft-data
+
+# root
+# ├── server/                         Generated Docker Files
+# │   ├── server.jar
+# │   ├── server-icon.png
+# │   ├── eula.txt
+# │   ├── server.properties
+# │   └── ops.json
+# └── data/                           Persistent Volume Claim
+#     ├── logs/
+#     └── world/
+
 FROM ubuntu:25.04
 
 # Labels for metadata
@@ -48,13 +67,3 @@ EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
 CMD ["java", "-Xmx6G", "-Xms4G", "-jar", "/server/server.jar", "nogui"]
-# root
-# ├── server/                         Generated Docker Files
-# │   ├── server.jar
-# │   ├── server-icon.png
-# │   ├── eula.txt
-# │   ├── server.properties
-# │   └── ops.json
-# └── data/                           Persistent Volume Claim
-#     ├── logs/
-#     └── world/
