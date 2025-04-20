@@ -3,7 +3,7 @@
 # @see https://eliasdh.com #
 # @since 01/01/2025        #
 ############################
-FROM ubuntu:24.04
+FROM ubuntu:25.04
 
 # Labels for metadata
 LABEL maintainer "Minecraft Server"
@@ -30,7 +30,6 @@ RUN echo "gamemode=survival" > server.properties && \
     echo "pvp=true" >> server.properties && \
     echo "spawn-protection=0" >> server.properties && \
     echo "online-mode=true" >> server.properties && \
-    echo "seed=694200000097885" >> server.properties && \
     echo "level-name=/data/world" >> server.properties && \
     echo "server-port=25565" >> server.properties && \
     echo "view-distance=12" >> server.properties && \
