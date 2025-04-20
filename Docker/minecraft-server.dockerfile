@@ -33,7 +33,8 @@ RUN echo "gamemode=survival" > server.properties && \
     echo "level-name=/data/world" >> server.properties && \
     echo "server-port=25565" >> server.properties && \
     echo "view-distance=12" >> server.properties && \
-    echo "simulation-distance=12" >> server.properties
+    echo "simulation-distance=12" >> server.properties && \
+    echo "white-list=false" >> server.properties
 
 # Download Minecraft server jar
 RUN wget https://piston-data.mojang.com/v1/objects/e6ec2f64e6080b9b5d9b471b291c33cc7f509733/server.jar
