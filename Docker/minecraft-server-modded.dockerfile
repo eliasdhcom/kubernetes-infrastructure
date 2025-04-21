@@ -50,7 +50,7 @@ WORKDIR /server
 # Copy configuration files
 RUN echo '[{"uuid": "", "name": "EliasDehondt", "level": 4}]' > ops.json
 RUN echo "eula=true" > eula.txt
-RUN echo "gamemode=survival" > server.properties && \
+RUN echo "gamemode=creative" > server.properties && \
     echo "motd=§a§lW§b§le§c§ll§d§lc§e§lo§f§lm§a§le §b§lt§c§lo §d§lM§e§lo§f§ld§a§ld§b§le§c§ld §d§lS§e§le§f§lr§a§lv§b§le§c§lr" >> server.properties && \
     echo "max-players=10" >> server.properties && \
     echo "difficulty=normal" >> server.properties && \
