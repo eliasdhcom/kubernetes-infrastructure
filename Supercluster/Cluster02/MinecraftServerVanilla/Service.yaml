@@ -7,11 +7,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: minecraft-service
-  namespace: minecraft
+  name: minecraft-server-vanilla-service
+  namespace: minecraft-server-vanilla
 spec:
   selector:
-    app: minecraft
+    app: minecraft-server-vanilla
   ports:
     - protocol: TCP
       port: 25565

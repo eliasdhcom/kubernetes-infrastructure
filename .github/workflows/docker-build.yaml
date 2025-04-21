@@ -24,4 +24,4 @@ jobs:
           echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u eliasdehondt --password-stdin
       - name: Build/Push Docker Image
         run: |
-          docker build --push -t ghcr.io/eliasdh-com/minecraft-server:latest -f ./Docker/minecraft-server.dockerfile .
+          docker build --push -t ghcr.io/eliasdh-com/minecraft-server-vanilla:latest -f ./Docker/minecraft-server-vanilla.dockerfile .

@@ -3,7 +3,7 @@
 # @see https://eliasdh.com #
 # @since 01/01/2025        #
 ############################
-# sudo docker pull ghcr.io/eliasdh-com/minecraft-server:latest
+# sudo docker pull ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
 # sudo docker run -d --name minecraft-server -p 25565:25565 -v minecraft-data:/data ghcr.io/eliasdh-com/minecraft-server:latest
 # sudo docker logs minecraft-server
 # sudo docker stop minecraft-server

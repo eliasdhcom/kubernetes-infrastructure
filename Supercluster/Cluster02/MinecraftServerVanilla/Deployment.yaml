@@ -7,27 +7,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: minecraft-deployment
-  namespace: minecraft
+  name: minecraft-server-vanilla-deployment
+  namespace: minecraft-server-vanilla
   labels:
-    app: minecraft
+    app: minecraft-server-vanilla
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: minecraft
+      app: minecraft-server-vanilla
   template:
     metadata:
       labels:
-        app: minecraft
+        app: minecraft-server-vanilla
     spec:
       containers:
-        - name: minecraft-container
-          image: ghcr.io/eliasdh-com/minecraft-server:latest
+        - name: minecraft-server-vanilla-container
+          image: ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 25565
-              name: minecraft
+              name: minecraft-server-vanilla
           resources:
             requests:
               memory: "2Gi"
@@ -36,10 +36,10 @@ spec:
               memory: "4Gi"
               cpu: "2"
           volumeMounts:
-            - name: minecraft-data
+            - name: minecraft-server-vanilla-data
               mountPath: /data
       volumes:
-        - name: minecraft-data
+        - name: minecraft-server-vanilla-data
           persistentVolumeClaim:
-            claimName: minecraft-pvc
+            claimName: minecraft-server-vanilla-pvc
 ---
