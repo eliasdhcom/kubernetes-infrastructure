@@ -25,3 +25,4 @@ jobs:
       - name: Build/Push Docker Image
         run: |
           docker build --push -t ghcr.io/eliasdh-com/minecraft-server-vanilla:latest -f ./Docker/minecraft-server-vanilla.dockerfile .
+          docker build --push -t ghcr.io/eliasdh-com/minecraft-server-modded:latest -f ./Docker/minecraft-server-modded.dockerfile .
