@@ -82,4 +82,4 @@ RUN ln -s /data/mods /server/mods
 EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
-CMD ["java", "-Xmx8G", "-Xms6G", "@user_jvm_args.txt", "@libraries/net/minecraftforge/forge/1.20.1-47.2.20/unix_args.txt", "nogui"]
+CMD ["java", "-Xmx8G", "-Xms6G", "@user_jvm_args.txt", "@libraries/net/minecraftforge/forge/1.20.1-47.3.0/user_jvm_args.txt", "-jar", "forge.jar", "--nogui"]
