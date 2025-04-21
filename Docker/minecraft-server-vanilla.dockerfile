@@ -6,7 +6,7 @@
 
 # Run:
 # sudo docker pull ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
-# sudo docker run -d --name minecraft-server-vanilla -p 25565:25565 -v minecraft-server-vanilla-data:/data ghcr.io/eliasdh-com/minecraft-server:latest
+# sudo docker run -d --name minecraft-server-vanilla -p 25565:25565 -v minecraft-server-vanilla-data:/data ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
 # sudo docker logs minecraft-server
 # sudo docker stop minecraft-server
 # sudo docker rm minecraft-server
