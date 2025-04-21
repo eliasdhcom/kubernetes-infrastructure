@@ -10,7 +10,7 @@
 # sudo docker logs minecraft-server-modded
 # sudo docker stop minecraft-server-modded
 # sudo docker rm minecraft-server-modded
-# sudo docker rmi ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
+# sudo docker rmi ghcr.io/eliasdh-com/minecraft-server-modded:latest
 # sudo docker volume rm minecraft-server-modded-data
 
 # Directory structuur:
@@ -83,4 +83,4 @@ RUN ln -s /data/mods /server/mods
 EXPOSE 25565/tcp
 
 # Run Minecraft server in a screen session
-CMD ["java", "-Xmx8G", "-Xms6G", "-jar", "/server/forge-1.20.1-47.2.20.jar", "nogui"]
+CMD ["java", "-Xmx8G", "-Xms6G", "@user_jvm_args.txt", "@libraries/net/minecraftforge/forge/1.20.1-47.2.20/unix_args.txt", "nogui"]

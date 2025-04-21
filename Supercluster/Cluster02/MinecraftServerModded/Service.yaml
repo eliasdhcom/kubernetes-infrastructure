@@ -7,11 +7,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: minecraft-vanilla-service
-  namespace: minecraft-vanilla
+  name: minecraft-modded-service
+  namespace: minecraft-modded
 spec:
   selector:
-    app: minecraft-vanilla
+    app: minecraft-modded
   ports:
     - protocol: TCP
       port: 25565

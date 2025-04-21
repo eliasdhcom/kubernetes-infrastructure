@@ -7,13 +7,13 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: minecraft-vanilla
+  name: minecraft-modded
   labels:
-    name: minecraft-vanilla
-    app: minecraft-vanilla
+    name: minecraft-modded
+    app: minecraft-modded
     owner: EliasDH
     environment: production
   annotations:
-    description: This namespace is used for the minecraft server vanilla application.
+    description: This namespace is used for the minecraft server modded application.
     contact: info@eliasdh.com
 ---
