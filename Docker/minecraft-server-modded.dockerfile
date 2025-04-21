@@ -67,10 +67,10 @@ RUN wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.2
 RUN java -jar forge-installer.jar --installServer && rm forge-installer.jar
 
 # Download mods
-RUN wget https://mediafilez.forgecdn.net/files/5407/409/appliedenergistics2-forge-15.2.12.jar -O mods/appliedenergistics2.jar
-RUN wget https://mediafilez.forgecdn.net/files/5482/714/EnderIO-1.20.1-7.0.1.42.jar -O mods/enderio.jar
-RUN wget https://mediafilez.forgecdn.net/files/5488/757/mekanism-1.20.1-10.4.9.51.jar -O mods/mekanism.jar
-RUN wget https://mediafilez.forgecdn.net/files/5139/595/compactmachines-5.2.2.jar -O mods/compactmachines.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/appliedenergistics2-1.20.1.jar -O mods/appliedenergistics2-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/compactmachines-1.20.1.jar -O mods/compactmachines-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/kubejsenderio-1.20.1.jar -O mods/kubejsenderio-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/mekanism-1.20.1.jar -O mods/mekanism-1.20.1.jar
 
 # Download and resize server icon
 RUN wget https://eliasdh.com/assets/media/images/logo-github.png -O server-icon.png
