@@ -62,14 +62,13 @@ RUN echo "gamemode=survival" > server.properties && \
     echo "view-distance=12" >> server.properties && \
     echo "simulation-distance=12" >> server.properties
 
-# Download Forge server (Minecraft 1.20.1, Forge 47.2.20)
-RUN wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.20/forge-1.20.1-47.2.20-installer.jar -O forge-installer.jar
+# Download Forge server (Minecraft 1.20.1, Forge 47.3.0)
+RUN wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.0/forge-1.20.1-47.3.0-installer.jar -O forge-installer.jar
 RUN java -jar forge-installer.jar --installServer && rm forge-installer.jar
 
 # Download mods
 RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/appliedenergistics2-1.20.1.jar -O mods/appliedenergistics2-1.20.1.jar
 RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/compactmachines-1.20.1.jar -O mods/compactmachines-1.20.1.jar
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/kubejsenderio-1.20.1.jar -O mods/kubejsenderio-1.20.1.jar
 RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/mekanism-1.20.1.jar -O mods/mekanism-1.20.1.jar
 
 # Download and resize server icon
