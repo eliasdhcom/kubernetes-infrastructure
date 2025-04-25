@@ -1,0 +1,22 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: netbox-letsencrypt-issuer
+  namespace: netbox
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: elias.dehondt@outlook.com
+    privateKeySecretRef:
+      name: netbox-letsencrypt-issuer-key
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx
+---

@@ -19,10 +19,10 @@ spec:
   tls:
     - hosts:
       - eliasdh.com
-      secretName: eliasdh-tls
+      secretName: eliasdhcom-tls
     - hosts:
       - www.eliasdh.com
-      secretName: wwweliasdh-tls
+      secretName: wwweliasdhcom-tls
   rules:
     - host: eliasdh.com
       http:

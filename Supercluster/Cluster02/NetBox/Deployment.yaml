@@ -1,0 +1,210 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netbox-postgresql
+  namespace: netbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netbox-postgresql
+  template:
+    metadata:
+      labels:
+        app: netbox-postgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: postgres:15
+        env:
+        - name: POSTGRES_DB
+          value: netbox
+        - name: POSTGRES_USER
+          value: netbox
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: db_password
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: netbox-postgresql-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netbox-redis
+  namespace: netbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netbox-redis
+  template:
+    metadata:
+      labels:
+        app: netbox-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7
+        env:
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: redis_password
+        command: ["redis-server", "--requirepass", "$(REDIS_PASSWORD)"]
+        volumeMounts:
+        - name: data
+          mountPath: /data
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: netbox-redis-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netbox
+  namespace: netbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netbox
+  template:
+    metadata:
+      labels:
+        app: netbox
+    spec:
+      containers:
+      - name: netbox
+        image: quay.io/netboxcommunity/netbox:v4.1.1
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: secret_key
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: db_password
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: redis_password
+        - name: ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: ALLOWED_HOSTS
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: DB_HOST
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: DB_USER
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: REDIS_HOST
+        - name: REDIS_CACHE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: REDIS_CACHE_HOST
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netbox-worker
+  namespace: netbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: netbox-worker
+  template:
+    metadata:
+      labels:
+        app: netbox-worker
+    spec:
+      containers:
+      - name: worker
+        image: quay.io/netboxcommunity/netbox:v4.1.1
+        command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "rqworker"]
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: secret_key
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: db_password
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: netbox-secrets
+              key: redis_password
+        - name: ALLOWED_HOSTS
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: ALLOWED_HOSTS
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: DB_HOST
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: DB_NAME
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: DB_USER
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: REDIS_HOST
+        - name: REDIS_CACHE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: REDIS_CACHE_HOST
+---

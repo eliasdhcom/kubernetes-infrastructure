@@ -19,10 +19,10 @@ spec:
   tls:
     - hosts:
       - tereiken.be
-      secretName: tereiken-tls
+      secretName: tereikenbe-tls
     - hosts:
       - www.tereiken.be
-      secretName: wwwtereiken-tls
+      secretName: wwwtereikenbe-tls
   rules:
     - host: tereiken.be
       http:

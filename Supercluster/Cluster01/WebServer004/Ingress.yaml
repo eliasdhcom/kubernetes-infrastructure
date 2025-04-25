@@ -19,10 +19,10 @@ spec:
   tls:
     - hosts:
       - levelup.be
-      secretName: levelup-tls
+      secretName: levelupbe-tls
     - hosts:
       - www.levelup.be
-      secretName: wwwlevelup-tls
+      secretName: wwwlevelupbe-tls
   rules:
     - host: levelup.be
       http:
