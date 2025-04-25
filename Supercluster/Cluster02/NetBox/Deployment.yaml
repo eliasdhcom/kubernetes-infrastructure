@@ -90,9 +90,27 @@ spec:
       labels:
         app: netbox
     spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+      - name: fix-permissions
+        image: busybox:1.36
+        securityContext:
+          runAsUser: 0
+        command: ["sh", "-c", "find /etc/netbox/media /etc/netbox/reports /etc/netbox/scripts -not -path '*/lost+found*' -exec chown 1000:0 {} \\; && find /etc/netbox/media /etc/netbox/reports /etc/netbox/scripts -not -path '*/lost+found*' -exec chmod g+rw {} \\;"]
+        volumeMounts:
+        - name: media
+          mountPath: /etc/netbox/media
+        - name: reports
+          mountPath: /etc/netbox/reports
+        - name: scripts
+          mountPath: /etc/netbox/scripts
       containers:
       - name: netbox
         image: quay.io/netboxcommunity/netbox:v4.1.1
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 0
         env:
         - name: SECRET_KEY
           valueFrom:
@@ -141,6 +159,23 @@ spec:
               key: REDIS_CACHE_HOST
         ports:
         - containerPort: 8080
+        volumeMounts:
+        - name: media
+          mountPath: /etc/netbox/media
+        - name: reports
+          mountPath: /etc/netbox/reports
+        - name: scripts
+          mountPath: /etc/netbox/scripts
+      volumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: netbox-media-pvc
+      - name: reports
+        persistentVolumeClaim:
+          claimName: netbox-reports-pvc
+      - name: scripts
+        persistentVolumeClaim:
+          claimName: netbox-scripts-pvc
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -157,9 +192,27 @@ spec:
       labels:
         app: netbox-worker
     spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+      - name: fix-permissions
+        image: busybox:1.36
+        securityContext:
+          runAsUser: 0
+        command: ["sh", "-c", "find /etc/netbox/media /etc/netbox/reports /etc/netbox/scripts -not -path '*/lost+found*' -exec chown 1000:0 {} \\; && find /etc/netbox/media /etc/netbox/reports /etc/netbox/scripts -not -path '*/lost+found*' -exec chmod g+rw {} \\;"]
+        volumeMounts:
+        - name: media
+          mountPath: /etc/netbox/media
+        - name: reports
+          mountPath: /etc/netbox/reports
+        - name: scripts
+          mountPath: /etc/netbox/scripts
       containers:
       - name: worker
         image: quay.io/netboxcommunity/netbox:v4.1.1
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 0
         command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "rqworker"]
         env:
         - name: SECRET_KEY
@@ -207,4 +260,21 @@ spec:
             configMapKeyRef:
               name: netbox-config
               key: REDIS_CACHE_HOST
+        volumeMounts:
+        - name: media
+          mountPath: /etc/netbox/media
+        - name: reports
+          mountPath: /etc/netbox/reports
+        - name: scripts
+          mountPath: /etc/netbox/scripts
+      volumes:
+      - name: media
+        persistentVolumeClaim:
+          claimName: netbox-media-pvc
+      - name: reports
+        persistentVolumeClaim:
+          claimName: netbox-reports-pvc
+      - name: scripts
+        persistentVolumeClaim:
+          claimName: netbox-scripts-pvc
 ---
