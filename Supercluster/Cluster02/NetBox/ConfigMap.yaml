@@ -10,7 +10,7 @@ metadata:
   name: netbox-config
   namespace: netbox
 data:
-  ALLOWED_HOSTS: "netbox-buckingham.eliasdh.com"
+  ALLOWED_HOSTS: "netbox.buckingham.eliasdh.com"
   DB_HOST: "netbox-postgresql"
   DB_NAME: "netbox"
   DB_USER: "netbox"
