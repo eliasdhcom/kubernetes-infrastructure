@@ -154,6 +154,8 @@ kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructur
 kubectl rollout restart deployment coredns -n kube-system
 ```
 
+> **Note:** sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --control-plane-endpoint="192.168.111.50:6443" --v=5
+
 ### 👉Step 9: Label the nodes
 
 ```bash
