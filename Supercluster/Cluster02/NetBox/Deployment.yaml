@@ -107,7 +107,7 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: netbox
-        image: ghcr.io/eliasdh-com/netbox-topology-views:latest
+        image: quay.io/netboxcommunity/netbox:v4.1.1
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
@@ -215,7 +215,7 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: worker
-        image: ghcr.io/eliasdh-com/netbox-topology-views:latest
+        image: quay.io/netboxcommunity/netbox:v4.1.1
         securityContext:
           runAsUser: 1000
           runAsGroup: 0

@@ -17,7 +17,7 @@ spec:
         spec:
           containers:
           - name: housekeeping
-            image: ghcr.io/eliasdh-com/netbox-topology-views:latest
+            image: quay.io/netboxcommunity/netbox:v4.1.1
             command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "housekeeping"]
             env:
             - name: SECRET_KEY
