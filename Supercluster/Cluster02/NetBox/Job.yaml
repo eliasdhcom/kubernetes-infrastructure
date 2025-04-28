@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: migrate
-        image: quay.io/netboxcommunity/netbox:v4.1.1
+        image: ghcr.io/eliasdh-com/netbox-topology-views:latest
         command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "migrate"]
         env:
         - name: SECRET_KEY

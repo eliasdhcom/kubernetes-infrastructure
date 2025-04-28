@@ -107,7 +107,7 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: netbox
-        image: quay.io/netboxcommunity/netbox:v4.1.1
+        image: ghcr.io/eliasdh-com/netbox-topology-views:latest
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
@@ -176,6 +176,12 @@ spec:
       - name: scripts
         persistentVolumeClaim:
           claimName: netbox-scripts-pvc
+      - name: config
+        configMap:
+          name: netbox-config
+          items:
+          - key: configuration.py
+            path: configuration.py
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -209,7 +215,7 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: worker
-        image: quay.io/netboxcommunity/netbox:v4.1.1
+        image: ghcr.io/eliasdh-com/netbox-topology-views:latest
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
