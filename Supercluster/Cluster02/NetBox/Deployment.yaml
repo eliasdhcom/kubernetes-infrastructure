@@ -176,12 +176,6 @@ spec:
       - name: scripts
         persistentVolumeClaim:
           claimName: netbox-scripts-pvc
-      - name: config
-        configMap:
-          name: netbox-config
-          items:
-          - key: configuration.py
-            path: configuration.py
 ---
 apiVersion: apps/v1
 kind: Deployment
