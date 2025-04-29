@@ -23,7 +23,4 @@ RUN wget -O /etc/netbox/config/configuration.py \
     wget -O /opt/netbox/requirements.txt \
     https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/requirements.txt
 
-
-RUN /usr/local/bin/uv pip install --no-cache-dir -r /opt/netbox/requirements.txt
-
-RUN pip install --no-cache-dir netbox-topology-views
+RUN /usr/local/bin/uv pip install --no-cache-dir -r /opt/netbox/requirements.txt netbox-topology-views
