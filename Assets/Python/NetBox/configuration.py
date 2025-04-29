@@ -41,7 +41,7 @@ DATABASE = {
     'USER': 'netbox',
     'PASSWORD': 'KAPPA69696969',
     'HOST':  'netbox-postgresql',
-    'PORT': environ.get('DB_PORT', ''),
+    'PORT': '5432',
     'OPTIONS': {'sslmode': environ.get('DB_SSLMODE', 'prefer')},
     'CONN_MAX_AGE': _environ_get_and_map('DB_CONN_MAX_AGE', '300', _AS_INT),
     'DISABLE_SERVER_SIDE_CURSORS': _environ_get_and_map('DB_DISABLE_SERVER_SIDE_CURSORS', 'False', _AS_BOOL),
