@@ -12,6 +12,9 @@ LABEL version="1.0"
 LABEL description="Custom NetBox image with configuration and plugins"
 LABEL org.opencontainers.image.description="Custom NetBox image with configuration and plugins"
 
+# Install wget
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
 # Download configuration files from GitHub
 RUN wget -O /etc/netbox/config/configuration.py \
     https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/configuration.py && \
