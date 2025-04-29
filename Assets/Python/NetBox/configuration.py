@@ -39,7 +39,7 @@ _BASE_DIR = dirname(dirname(abspath(__file__)))
 DATABASE = {
     'NAME': 'netbox',
     'USER': 'netbox',
-    'PASSWORD': 'KAPPA69696969',
+    'PASSWORD': 'KAPPA69696969', # DEMO ONLY
     'HOST':  'netbox-postgresql',
     'PORT': '5432',
     'OPTIONS': {'sslmode': environ.get('DB_SSLMODE', 'prefer')},
@@ -55,7 +55,7 @@ REDIS = {
         'SENTINEL_SERVICE': environ.get('REDIS_SENTINEL_SERVICE', 'default'),
         'SENTINEL_TIMEOUT': _environ_get_and_map('REDIS_SENTINEL_TIMEOUT', 10, _AS_INT),
         'USERNAME': environ.get('REDIS_USERNAME', ''),
-        'PASSWORD': 'KAPPA69696969',
+        'PASSWORD': 'KAPPA69696969', # DEMO ONLY
         'DATABASE': _environ_get_and_map('REDIS_DATABASE', 0, _AS_INT),
         'SSL': _environ_get_and_map('REDIS_SSL', 'False', _AS_BOOL),
         'INSECURE_SKIP_TLS_VERIFY': _environ_get_and_map('REDIS_INSECURE_SKIP_TLS_VERIFY', 'False', _AS_BOOL),
@@ -66,7 +66,7 @@ REDIS = {
         'SENTINELS': [tuple(uri.split(':')) for uri in _environ_get_and_map('REDIS_CACHE_SENTINELS', '', _AS_LIST) if uri != ''],
         'SENTINEL_SERVICE': environ.get('REDIS_CACHE_SENTINEL_SERVICE', environ.get('REDIS_SENTINEL_SERVICE', 'default')),
         'USERNAME': environ.get('REDIS_CACHE_USERNAME', environ.get('REDIS_USERNAME', '')),
-        'PASSWORD': 'KAPPA69696969',
+        'PASSWORD': 'KAPPA69696969', # DEMO ONLY
         'DATABASE': _environ_get_and_map('REDIS_CACHE_DATABASE', '1', _AS_INT),
         'SSL': _environ_get_and_map('REDIS_CACHE_SSL', environ.get('REDIS_SSL', 'False'), _AS_BOOL),
         'INSECURE_SKIP_TLS_VERIFY': _environ_get_and_map('REDIS_CACHE_INSECURE_SKIP_TLS_VERIFY', environ.get('REDIS_INSECURE_SKIP_TLS_VERIFY', 'False'), _AS_BOOL),

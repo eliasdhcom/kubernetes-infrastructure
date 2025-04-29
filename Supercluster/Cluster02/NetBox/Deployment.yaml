@@ -30,8 +30,8 @@ spec:
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: netbox-secrets
-              key: db_password
+              name: netbox-secret
+              key: PASSWORD
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
         volumeMounts:
@@ -64,8 +64,8 @@ spec:
         - name: REDIS_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: netbox-secrets
-              key: redis_password
+              name: netbox-secret
+              key: PASSWORD
         command: ["redis-server", "--requirepass", "$(REDIS_PASSWORD)"]
         volumeMounts:
         - name: data
@@ -107,56 +107,11 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: netbox
-        image: quay.io/netboxcommunity/netbox:v4.1.1
+        image: ghcr.io/eliasdh-com/netbox:latest
+        imagePullPolicy: Always
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
-        env:
-        - name: SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: netbox-secrets
-              key: secret_key
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: netbox-secrets
-              key: db_password
-        - name: REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: netbox-secrets
-              key: redis_password
-        - name: ALLOWED_HOSTS
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: ALLOWED_HOSTS
-        - name: DB_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: DB_HOST
-        - name: DB_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: DB_NAME
-        - name: DB_USER
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: DB_USER
-        - name: REDIS_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: REDIS_HOST
-        - name: REDIS_CACHE_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: REDIS_CACHE_HOST
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -209,57 +164,12 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: worker
-        image: quay.io/netboxcommunity/netbox:v4.1.1
+        image: ghcr.io/eliasdh-com/netbox:latest
+        imagePullPolicy: Always
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
         command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "rqworker"]
-        env:
-        - name: SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: netbox-secrets
-              key: secret_key
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: netbox-secrets
-              key: db_password
-        - name: REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: netbox-secrets
-              key: redis_password
-        - name: ALLOWED_HOSTS
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: ALLOWED_HOSTS
-        - name: DB_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: DB_HOST
-        - name: DB_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: DB_NAME
-        - name: DB_USER
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: DB_USER
-        - name: REDIS_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: REDIS_HOST
-        - name: REDIS_CACHE_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: netbox-config
-              key: REDIS_CACHE_HOST
         volumeMounts:
         - name: media
           mountPath: /etc/netbox/media
