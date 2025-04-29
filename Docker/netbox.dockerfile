@@ -7,7 +7,7 @@
 FROM netboxcommunity/netbox:latest
 
 # Labels for metadata
-LABEL maintainer=""
+LABEL maintainer="Custom NetBox image"
 LABEL version="1.0"
 LABEL description="Custom NetBox image with configuration and plugins"
 LABEL org.opencontainers.image.description="Custom NetBox image with configuration and plugins"
@@ -23,4 +23,7 @@ RUN wget -O /etc/netbox/config/configuration.py \
     wget -O /opt/netbox/requirements.txt \
     https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/requirements.txt
 
-RUN /usr/local/bin/uv pip install --no-cache-dir -r /opt/netbox/requirements.txt netbox-topology-views
+# New directory for "netbox-topology-views"
+RUN mkdir -p /opt/netbox/netbox/static/netbox_topology_views/img
+
+RUN /usr/local/bin/uv pip install --no-cache-dir -r /opt/netbox/requirements.txt netbox-topology-views netbox-interface-synchronization
