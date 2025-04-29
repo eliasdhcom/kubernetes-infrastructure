@@ -28,21 +28,19 @@ def _environ_get_and_map(variable_name: str, default: str | None = None, map_fn:
 
     return map_fn(env_value)
 
+ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', 'netbox.buckingham.eliasdh.com')
+
 _AS_BOOL = lambda value : value.lower() == 'true'
 _AS_INT = lambda value : int(value)
 _AS_LIST = lambda value : list(filter(None, value.split(' ')))
 
 _BASE_DIR = dirname(dirname(abspath(__file__)))
 
-ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', '*').split(' ')
-if '*' not in ALLOWED_HOSTS and 'localhost' not in ALLOWED_HOSTS:
-    ALLOWED_HOSTS.append('localhost')
-
 DATABASE = {
     'NAME': environ.get('DB_NAME', 'netbox'),
-    'USER': environ.get('DB_USER', ''),
-    'PASSWORD': _read_secret('db_password', environ.get('DB_PASSWORD', '')),
-    'HOST': environ.get('DB_HOST', 'localhost'),
+    'USER': environ.get('DB_USER', 'netbox'),
+    'PASSWORD': _read_secret('db_password', environ.get('DB_PASSWORD', 'S0FQUEExNDE1OTI2NQ==')),
+    'HOST': environ.get('DB_HOST', 'netbox-postgresql'),
     'PORT': environ.get('DB_PORT', ''),
     'OPTIONS': {'sslmode': environ.get('DB_SSLMODE', 'prefer')},
     'CONN_MAX_AGE': _environ_get_and_map('DB_CONN_MAX_AGE', '300', _AS_INT),
@@ -51,19 +49,19 @@ DATABASE = {
 
 REDIS = {
     'tasks': {
-        'HOST': environ.get('REDIS_HOST', 'localhost'),
+        'HOST': environ.get('REDIS_HOST', 'netbox-redis'),
         'PORT': _environ_get_and_map('REDIS_PORT', 6379, _AS_INT),
         'SENTINELS': [tuple(uri.split(':')) for uri in _environ_get_and_map('REDIS_SENTINELS', '', _AS_LIST) if uri != ''],
         'SENTINEL_SERVICE': environ.get('REDIS_SENTINEL_SERVICE', 'default'),
         'SENTINEL_TIMEOUT': _environ_get_and_map('REDIS_SENTINEL_TIMEOUT', 10, _AS_INT),
         'USERNAME': environ.get('REDIS_USERNAME', ''),
-        'PASSWORD': _read_secret('redis_password', environ.get('REDIS_PASSWORD', '')),
+        'PASSWORD': _read_secret('redis_password', environ.get('REDIS_PASSWORD', 'S0FQUEExNDE1OTI2NQ==')),
         'DATABASE': _environ_get_and_map('REDIS_DATABASE', 0, _AS_INT),
         'SSL': _environ_get_and_map('REDIS_SSL', 'False', _AS_BOOL),
         'INSECURE_SKIP_TLS_VERIFY': _environ_get_and_map('REDIS_INSECURE_SKIP_TLS_VERIFY', 'False', _AS_BOOL),
     },
     'caching': {
-        'HOST': environ.get('REDIS_CACHE_HOST', environ.get('REDIS_HOST', 'localhost')),
+        'HOST': environ.get('REDIS_CACHE_HOST', environ.get('REDIS_HOST', 'netbox-redis')),
         'PORT': _environ_get_and_map('REDIS_CACHE_PORT', environ.get('REDIS_PORT', '6379'), _AS_INT),
         'SENTINELS': [tuple(uri.split(':')) for uri in _environ_get_and_map('REDIS_CACHE_SENTINELS', '', _AS_LIST) if uri != ''],
         'SENTINEL_SERVICE': environ.get('REDIS_CACHE_SENTINEL_SERVICE', environ.get('REDIS_SENTINEL_SERVICE', 'default')),
@@ -75,7 +73,7 @@ REDIS = {
     },
 }
 
-SECRET_KEY = _read_secret('secret_key', environ.get('SECRET_KEY', ''))
+SECRET_KEY = _read_secret('secret_key', environ.get('SECRET_KEY', '123456789123456789123456789123456789123456789123456789123456')) # 
 
 
 if 'ALLOWED_URL_SCHEMES' in environ:

@@ -1,0 +1,49 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+
+# Plugin netbox-topology-views requirements
+djangorestframework
+django-filter
+black
+
+# Normal requirements
+Django<5.2
+django-cors-headers
+django-debug-toolbar
+django-filter
+django-htmx
+django-mptt
+django-pglocks
+django-prometheus
+django-redis
+django-rich
+django-rq
+django-tables2
+django-taggit
+django-timezone-field
+djangorestframework
+drf-spectacular
+drf-spectacular-sidecar
+feedparser
+gunicorn
+Jinja2
+Markdown
+mkdocs-material
+mkdocstrings[python]
+netaddr
+nh3
+Pillow
+psycopg[c,pool]
+PyYAML
+requests
+rq
+social-auth-core
+social-auth-app-django
+strawberry-graphql
+strawberry-graphql-django
+svgwrite
+tablib
+tzdata

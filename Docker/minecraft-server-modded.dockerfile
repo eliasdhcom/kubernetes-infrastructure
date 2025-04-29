@@ -67,9 +67,9 @@ RUN wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.0
 RUN java -jar forge-installer.jar --installServer && rm forge-installer.jar
 
 # Download mods
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/appliedenergistics2-1.20.1.jar -O mods/appliedenergistics2-1.20.1.jar
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/compactmachines-1.20.1.jar -O mods/compactmachines-1.20.1.jar
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/mekanism-1.20.1.jar -O mods/mekanism-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/appliedenergistics2-1.20.1.jar -O mods/appliedenergistics2-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/compactmachines-1.20.1.jar -O mods/compactmachines-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/mekanism-1.20.1.jar -O mods/mekanism-1.20.1.jar
 
 # Download and resize server icon
 RUN wget https://eliasdh.com/assets/media/images/logo-github.png -O server-icon.png
