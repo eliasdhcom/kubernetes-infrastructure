@@ -28,7 +28,7 @@ def _environ_get_and_map(variable_name: str, default: str | None = None, map_fn:
 
     return map_fn(env_value)
 
-ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', 'netbox.buckingham.eliasdh.com')
+ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', ["netbox.buckingham.eliasdh.com"])
 
 _AS_BOOL = lambda value : value.lower() == 'true'
 _AS_INT = lambda value : int(value)

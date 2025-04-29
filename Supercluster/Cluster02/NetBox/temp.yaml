@@ -1,4 +1,21 @@
 apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: netbox-housekeeping
+  namespace: netbox
+spec:
+  schedule: "0 0 * * *" # Daily at midnight
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: housekeeping
+            image: ghcr.io/eliasdh-com/netbox:latest
+            command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "housekeeping"]
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
 kind: Job
 metadata:
   name: netbox-migrate
@@ -32,13 +49,15 @@ spec:
         image: postgres:15
         env:
         - name: POSTGRES_DB
-          configMapKeyRef:
-            name: netbox-secrets
-            key: db_name
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: db_name
         - name: POSTGRES_USER
-          configMapKeyRef:
-            name: netbox-secrets
-            key: db_user
+          valueFrom:
+            configMapKeyRef:
+              name: netbox-config
+              key: db_user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -197,21 +216,4 @@ spec:
       - name: scripts
         persistentVolumeClaim:
           claimName: netbox-scripts-pvc
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: netbox-housekeeping
-  namespace: netbox
-spec:
-  schedule: "0 0 * * *" # Daily at midnight
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-          - name: housekeeping
-            image: ghcr.io/eliasdh-com/netbox:latest
-            command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "housekeeping"]
-          restartPolicy: OnFailure
 ---
