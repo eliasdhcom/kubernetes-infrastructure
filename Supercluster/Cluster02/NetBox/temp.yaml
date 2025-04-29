@@ -12,6 +12,7 @@ spec:
           containers:
           - name: housekeeping
             image: ghcr.io/eliasdh-com/netbox:latest
+            imagePullPolicy: Always
             command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "housekeeping"]
           restartPolicy: OnFailure
 ---
@@ -26,6 +27,7 @@ spec:
       containers:
       - name: migrate
         image: ghcr.io/eliasdh-com/netbox:latest
+        imagePullPolicy: Always
         command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "migrate"]
       restartPolicy: OnFailure
 ---
@@ -139,6 +141,7 @@ spec:
       containers:
       - name: netbox
         image: ghcr.io/eliasdh-com/netbox:latest
+        imagePullPolicy: Always
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
@@ -195,6 +198,7 @@ spec:
       containers:
       - name: worker
         image: ghcr.io/eliasdh-com/netbox:latest
+        imagePullPolicy: Always
         securityContext:
           runAsUser: 1000
           runAsGroup: 0
