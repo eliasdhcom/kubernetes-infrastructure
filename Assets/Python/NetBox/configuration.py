@@ -39,7 +39,7 @@ _BASE_DIR = dirname(dirname(abspath(__file__)))
 DATABASE = {
     'NAME': environ.get('DB_NAME', 'netbox'),
     'USER': environ.get('DB_USER', 'netbox'),
-    'PASSWORD': _read_secret('db_password', environ.get('DB_PASSWORD', 'S0FQUEExNDE1OTI2NQ==')),
+    'PASSWORD': _read_secret('db_password', environ.get('DB_PASSWORD', 'KAPPA69696969')),
     'HOST': environ.get('DB_HOST', 'netbox-postgresql'),
     'PORT': environ.get('DB_PORT', ''),
     'OPTIONS': {'sslmode': environ.get('DB_SSLMODE', 'prefer')},
@@ -55,7 +55,7 @@ REDIS = {
         'SENTINEL_SERVICE': environ.get('REDIS_SENTINEL_SERVICE', 'default'),
         'SENTINEL_TIMEOUT': _environ_get_and_map('REDIS_SENTINEL_TIMEOUT', 10, _AS_INT),
         'USERNAME': environ.get('REDIS_USERNAME', ''),
-        'PASSWORD': _read_secret('redis_password', environ.get('REDIS_PASSWORD', 'S0FQUEExNDE1OTI2NQ==')),
+        'PASSWORD': _read_secret('redis_password', environ.get('REDIS_PASSWORD', 'KAPPA69696969')),
         'DATABASE': _environ_get_and_map('REDIS_DATABASE', 0, _AS_INT),
         'SSL': _environ_get_and_map('REDIS_SSL', 'False', _AS_BOOL),
         'INSECURE_SKIP_TLS_VERIFY': _environ_get_and_map('REDIS_INSECURE_SKIP_TLS_VERIFY', 'False', _AS_BOOL),
