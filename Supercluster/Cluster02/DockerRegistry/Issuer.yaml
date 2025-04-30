@@ -1,0 +1,22 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: docker-registry-letsencrypt-issuer
+  namespace: docker-registry
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: elias.dehondt@outlook.com
+    privateKeySecretRef:
+      name: docker-registry-letsencrypt-issuer-key
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx
+---
