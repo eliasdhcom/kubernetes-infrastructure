@@ -32,6 +32,15 @@ data:
         loadbalance
     }
 
+    registry.eliasdh.com:53 {
+        errors
+        cache 30
+        hosts {
+            192.168.1.200 registry.eliasdh.com
+            fallthrough
+        }
+    }
+
     netbox.buckingham.eliasdh.com:53 {
         errors
         cache 30
