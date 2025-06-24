@@ -31,7 +31,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver005-service
+                name: webserver005-frontend-service
                 port:
                   number: 80
     - host: www.tereiken.be
@@ -41,7 +41,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver005-service
+                name: webserver005-frontend-service
                 port:
                   number: 80
 ---

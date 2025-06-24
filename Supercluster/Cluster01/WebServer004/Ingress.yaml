@@ -31,7 +31,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver004-service
+                name: webserver004-frontend-service
                 port:
                   number: 80
     - host: www.levelup.be
@@ -41,7 +41,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver004-service
+                name: webserver004-frontend-service
                 port:
                   number: 80
 ---

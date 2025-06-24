@@ -7,17 +7,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver002-deployment
+  name: webserver002-frontend-deployment
   namespace: webserver002
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webserver002
+      app: webserver002-frontend
   template:
     metadata:
       labels:
-        app: webserver002
+        app: webserver002-frontend
     spec:
       affinity:
         nodeAffinity:
@@ -31,11 +31,73 @@ spec:
       imagePullSecrets:
         - name: github-registry
       containers:
-        - name: webserver002-container
+        - name: webserver002-frontend-container
           image: "ghcr.io/eliasdh-com/displaylevelupbe-frontend:latest"
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver002-backend-deployment
+  namespace: webserver002
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver002-backend
+  template:
+    metadata:
+      labels:
+        app: webserver002-backend
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - compute
+      imagePullSecrets:
+        - name: github-registry
+      containers:
+        - name: webserver002-backend-container
+          image: "ghcr.io/eliasdh-com/displaylevelupbe-backend:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: clientId
+              valueFrom:
+                secretKeyRef:
+                  name: webserver002-secret
+                  key: clientId
+            - name: clientSecret
+              valueFrom:
+                secretKeyRef:
+                  name: webserver002-secret
+                  key: clientSecret
+            - name: levelUpDisplayAppAPIKey
+              valueFrom:
+                secretKeyRef:
+                  name: webserver002-secret
+                  key: levelUpDisplayAppAPIKey
+            - name: baseUrlLive
+              value: "https://api.roller.app"
+            - name: baseUrlTest
+              value: "https://api.play.roller.app"
+            - name: port
+              value: 3000
           resources:
             limits:
               memory: "128Mi"

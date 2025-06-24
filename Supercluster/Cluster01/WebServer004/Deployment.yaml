@@ -7,17 +7,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver004-deployment
+  name: webserver004-frontend-deployment
   namespace: webserver004
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webserver004
+      app: webserver004-frontend
   template:
     metadata:
       labels:
-        app: webserver004
+        app: webserver004-frontend
     spec:
       affinity:
         nodeAffinity:
@@ -31,7 +31,7 @@ spec:
       imagePullSecrets:
         - name: github-registry
       containers:
-        - name: webserver004-container
+        - name: webserver004-frontend-container
           image: "ghcr.io/eliasdh-com/levelupbe-frontend:latest"
           imagePullPolicy: Always
           ports:

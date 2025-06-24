@@ -28,7 +28,17 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver002-service
+                name: webserver002-frontend-service
+                port:
+                  number: 80
+    - host: display.levelup.be
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver002-backend-service
                 port:
                   number: 80
 ---

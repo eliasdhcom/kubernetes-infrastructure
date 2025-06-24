@@ -31,7 +31,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver001-service
+                name: webserver001-frontend-service
                 port:
                   number: 80
     - host: www.eliasdh.com
@@ -41,7 +41,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: webserver001-service
+                name: webserver001-frontend-service
                 port:
                   number: 80
 ---

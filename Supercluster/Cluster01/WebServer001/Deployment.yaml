@@ -7,17 +7,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver001-deployment
+  name: webserver001-frontend-deployment
   namespace: webserver001
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webserver001
+      app: webserver001-frontend
   template:
     metadata:
       labels:
-        app: webserver001
+        app: webserver001-frontend
     spec:
       affinity:
         nodeAffinity:
@@ -31,7 +31,7 @@ spec:
       imagePullSecrets:
         - name: github-registry
       containers:
-        - name: webserver001-container
+        - name: webserver001-frontend-container
           image: "ghcr.io/eliasdh-com/eliasdhcom-frontend:latest"
           imagePullPolicy: Always
           ports:

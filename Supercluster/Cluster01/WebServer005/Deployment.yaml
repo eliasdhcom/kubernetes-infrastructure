@@ -7,17 +7,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver005-deployment
+  name: webserver005-frontend-deployment
   namespace: webserver005
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: webserver005
+      app: webserver005-frontend
   template:
     metadata:
       labels:
-        app: webserver005
+        app: webserver005-frontend
     spec:
       affinity:
         nodeAffinity:
@@ -31,7 +31,7 @@ spec:
       imagePullSecrets:
         - name: github-registry
       containers:
-        - name: webserver005-container
+        - name: webserver005-frontend-container
           image: "ghcr.io/eliasdh-com/tereikenbe-frontend:latest"
           imagePullPolicy: Always
           ports:

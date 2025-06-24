@@ -7,11 +7,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webserver001-service
+  name: webserver001-frontend-service
   namespace: webserver001
 spec:
   selector:
-    app: webserver001
+    app: webserver001-frontend
   ports:
     - protocol: TCP
       port: 80
