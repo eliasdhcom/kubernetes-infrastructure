@@ -77,27 +77,29 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: clientId
+            - name: ROLLER_CLIENT_ID
               valueFrom:
                 secretKeyRef:
                   name: webserver002-secret
-                  key: clientId
-            - name: clientSecret
+                  key: ROLLER_CLIENT_ID
+            - name: ROLLER_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: webserver002-secret
-                  key: clientSecret
-            - name: levelUpDisplayAppAPIKey
+                  key: ROLLER_CLIENT_SECRET
+            - name: LEVEL_UP_DISPLAY_APP_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: webserver002-secret
-                  key: levelUpDisplayAppAPIKey
-            - name: baseUrlLive
+                  key: LEVEL_UP_DISPLAY_APP_API_KEY
+            - name: ROLLER_API_BASE_LIVE_URL
               value: "https://api.roller.app"
-            - name: baseUrlTest
+            - name: ROLLER_API_BASE_TEST_URL
               value: "https://api.play.roller.app"
-            - name: port
-              value: 3000
+            - name: PORT
+              value: "3000"
+            - name: NODE_ENV
+              value: "production"
           resources:
             limits:
               memory: "128Mi"
