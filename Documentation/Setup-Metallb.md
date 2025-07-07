@@ -48,26 +48,26 @@ kubectl api-resources | grep metallb
 
 ```bash
 # Cluster 01
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Metallb/IPAddressPool.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Metallb/IPAddressPool.yaml
 
 # Cluster 02
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Metallb/IPAddressPool.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Metallb/IPAddressPool.yaml
 
 # Cluster 03
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Metallb/IPAddressPool.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Metallb/IPAddressPool.yaml
 ```
 
 ### 👉Step 5: Set the L2 Advertisement
 
 ```bash
 # Cluster 01
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Metallb/L2Advertisement.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Metallb/L2Advertisement.yaml
 
 # Cluster 02
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Metallb/L2Advertisement.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Metallb/L2Advertisement.yaml
 
 # Cluster 03
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Metallb/L2Advertisement.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Metallb/L2Advertisement.yaml
 ```
 
 ### 👉Step 6: Check if the L2 Advertisement is set

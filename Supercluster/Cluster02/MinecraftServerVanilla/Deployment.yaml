@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: minecraft-vanilla-container
-          image: ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
+          image: ghcr.io/eliasdhcom/minecraft-server-vanilla:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 25565

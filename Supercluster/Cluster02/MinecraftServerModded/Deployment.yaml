@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: minecraft-modded-container
-          image: ghcr.io/eliasdh-com/minecraft-server-modded:latest
+          image: ghcr.io/eliasdhcom/minecraft-server-modded:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 25565

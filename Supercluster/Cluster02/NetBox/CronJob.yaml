@@ -17,7 +17,7 @@ spec:
         spec:
           containers:
           - name: housekeeping
-            image: ghcr.io/eliasdh-com/netbox:latest
+            image: ghcr.io/eliasdhcom/netbox:latest
             imagePullPolicy: Always
             command: ["/opt/netbox/venv/bin/python", "/opt/netbox/netbox/manage.py", "housekeeping"]
           restartPolicy: OnFailure

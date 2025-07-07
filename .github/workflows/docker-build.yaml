@@ -24,7 +24,7 @@ jobs:
           echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u eliasdehondt --password-stdin
       - name: Build/Push Docker Image
         run: |
-          docker build --push -t ghcr.io/eliasdh-com/minecraft-server-vanilla:latest -f ./Docker/minecraft-server-vanilla.dockerfile .
+          docker build --push -t ghcr.io/eliasdhcom/minecraft-server-vanilla:latest -f ./Docker/minecraft-server-vanilla.dockerfile .
   minecraft-server-modded-build-push-docker:
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +35,7 @@ jobs:
           echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u eliasdehondt --password-stdin
       - name: Build/Push Docker Image
         run: |
-          docker build --push -t ghcr.io/eliasdh-com/minecraft-server-modded:latest -f ./Docker/minecraft-server-modded.dockerfile .
+          docker build --push -t ghcr.io/eliasdhcom/minecraft-server-modded:latest -f ./Docker/minecraft-server-modded.dockerfile .
   netbox-build-push-docker:
             runs-on: ubuntu-latest
             steps:
@@ -46,4 +46,4 @@ jobs:
                   echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u eliasdehondt --password-stdin
               - name: Build/Push Docker Image
                 run: |
-                  docker build --push -t ghcr.io/eliasdh-com/netbox:latest -f ./Docker/netbox.dockerfile .
+                  docker build --push -t ghcr.io/eliasdhcom/netbox:latest -f ./Docker/netbox.dockerfile .

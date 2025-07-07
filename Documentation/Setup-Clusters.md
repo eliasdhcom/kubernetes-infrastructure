@@ -28,13 +28,13 @@ This document provides a step-by-step guide to setting up the `Kubernetes` clust
 
 ```bash
 # Cluster01
-sudo kubeadm init --config https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/ClusterConfiguration.yaml --upload-certs --v "5" # For cluster01 on node01, node02, node03
+sudo kubeadm init --config https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/ClusterConfiguration.yaml --upload-certs --v "5" # For cluster01 on node01, node02, node03
 
 # Cluster02
-sudo kubeadm init --config https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/ClusterConfiguration.yaml --upload-certs --v "5" # For cluster02 on node11, node12, node13
+sudo kubeadm init --config https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/ClusterConfiguration.yaml --upload-certs --v "5" # For cluster02 on node11, node12, node13
 
 # Cluster03
-sudo kubeadm init --config https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/ClusterConfiguration.yaml --upload-certs --v "5" # For cluster03 on node21, node22, node23
+sudo kubeadm init --config https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/ClusterConfiguration.yaml --upload-certs --v "5" # For cluster03 on node21, node22, node23
 ```
 
 > **Note:** Copy the kubeadm join commands for the worker nodes and the master node
@@ -145,11 +145,11 @@ watch kubectl get pods -n kube-system # Press Ctrl+C to exit
 ### 👉Step 8: Set up custom DNS records
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Coredns/ConfigMap.yaml # For cluster01
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster01/Coredns/ConfigMap.yaml # For cluster01
 
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Coredns/ConfigMap.yaml # For cluster02
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster02/Coredns/ConfigMap.yaml # For cluster02
 
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Coredns/ConfigMap.yaml # For cluster03
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/K8s-Infrastructure/refs/heads/main/Supercluster/Cluster03/Coredns/ConfigMap.yaml # For cluster03
 
 kubectl rollout restart deployment coredns -n kube-system
 ```

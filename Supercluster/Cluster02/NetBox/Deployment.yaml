@@ -107,7 +107,7 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: netbox
-        image: ghcr.io/eliasdh-com/netbox:latest
+        image: ghcr.io/eliasdhcom/netbox:latest
         imagePullPolicy: Always
         securityContext:
           runAsUser: 1000
@@ -164,7 +164,7 @@ spec:
           mountPath: /etc/netbox/scripts
       containers:
       - name: worker
-        image: ghcr.io/eliasdh-com/netbox:latest
+        image: ghcr.io/eliasdhcom/netbox:latest
         imagePullPolicy: Always
         securityContext:
           runAsUser: 1000

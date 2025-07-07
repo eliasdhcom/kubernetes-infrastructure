@@ -5,12 +5,12 @@
 ############################
 
 # Run:
-# sudo docker pull ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
-# sudo docker run -d --name minecraft-server-vanilla -p 25565:25565 -v minecraft-server-vanilla-data:/data ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
+# sudo docker pull ghcr.io/eliasdhcom/minecraft-server-vanilla:latest
+# sudo docker run -d --name minecraft-server-vanilla -p 25565:25565 -v minecraft-server-vanilla-data:/data ghcr.io/eliasdhcom/minecraft-server-vanilla:latest
 # sudo docker logs minecraft-server-vanilla
 # sudo docker stop minecraft-server-vanilla
 # sudo docker rm minecraft-server-vanilla
-# sudo docker rmi ghcr.io/eliasdh-com/minecraft-server-vanilla:latest
+# sudo docker rmi ghcr.io/eliasdhcom/minecraft-server-vanilla:latest
 # sudo docker volume rm minecraft-server-vanilla-data
 
 # Directory structuur:

@@ -32,7 +32,7 @@ spec:
         - name: github-registry
       containers:
         - name: webserver002-frontend-container
-          image: "ghcr.io/eliasdh-com/displaylevelupbe-frontend:latest"
+          image: "ghcr.io/eliasdhcom/displaylevelupbe-frontend:latest"
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -72,7 +72,7 @@ spec:
         - name: github-registry
       containers:
         - name: webserver002-backend-container
-          image: "ghcr.io/eliasdh-com/displaylevelupbe-backend:latest"
+          image: "ghcr.io/eliasdhcom/displaylevelupbe-backend:latest"
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

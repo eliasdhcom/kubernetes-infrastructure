@@ -17,11 +17,11 @@ RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 
 # Download configuration files from GitHub
 RUN wget -O /etc/netbox/config/configuration.py \
-    https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/configuration.py && \
+    https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/configuration.py && \
     wget -O /etc/netbox/config/plugins.py \
-    https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/plugins.py && \
+    https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/plugins.py && \
     wget -O /opt/netbox/requirements.txt \
-    https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/requirements.txt
+    https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Assets/Python/NetBox/requirements.txt
 
 # New directory for "netbox-topology-views"
 RUN mkdir -p /opt/netbox/netbox/static/netbox_topology_views/img

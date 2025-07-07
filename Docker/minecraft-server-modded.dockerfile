@@ -5,12 +5,12 @@
 ############################
 
 # Run:
-# sudo docker pull ghcr.io/eliasdh-com/minecraft-server-modded:latest
-# sudo docker run -d --name minecraft-server-modded -p 25565:25565 -v minecraft-server-modded-data:/data ghcr.io/eliasdh-com/minecraft-server-modded:latest
+# sudo docker pull ghcr.io/eliasdhcom/minecraft-server-modded:latest
+# sudo docker run -d --name minecraft-server-modded -p 25565:25565 -v minecraft-server-modded-data:/data ghcr.io/eliasdhcom/minecraft-server-modded:latest
 # sudo docker logs minecraft-server-modded
 # sudo docker stop minecraft-server-modded
 # sudo docker rm minecraft-server-modded
-# sudo docker rmi ghcr.io/eliasdh-com/minecraft-server-modded:latest
+# sudo docker rmi ghcr.io/eliasdhcom/minecraft-server-modded:latest
 # sudo docker volume rm minecraft-server-modded-data
 
 # Directory structuur:
@@ -67,9 +67,9 @@ RUN wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.0
 RUN java -jar forge-installer.jar --installServer && rm forge-installer.jar
 
 # Download mods
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/appliedenergistics2-1.20.1.jar -O mods/appliedenergistics2-1.20.1.jar
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/compactmachines-1.20.1.jar -O mods/compactmachines-1.20.1.jar
-RUN wget https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/mekanism-1.20.1.jar -O mods/mekanism-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/appliedenergistics2-1.20.1.jar -O mods/appliedenergistics2-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/compactmachines-1.20.1.jar -O mods/compactmachines-1.20.1.jar
+RUN wget https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Assets/Java/Minecraft/mekanism-1.20.1.jar -O mods/mekanism-1.20.1.jar
 
 # Download and resize server icon
 RUN wget https://eliasdh.com/assets/media/images/logo-github.png -O server-icon.png

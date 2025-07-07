@@ -102,7 +102,7 @@ rm auth
 ### 👉Step 8: Set up a ingress controller
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/EliasDH-com/kubernetes-infrastructure/refs/heads/main/Supercluster/Cluster01/Longhorn/Ingress.yaml
+kubectl apply -f https://raw.githubusercontent.com/eliasdhcom/kubernetes-infrastructure/refs/heads/main/Supercluster/Cluster01/Longhorn/Ingress.yaml
 # Service name: longhorn-frontend
 # Namespace: longhorn-system
 # Port: 8080

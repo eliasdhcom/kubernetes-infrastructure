@@ -32,7 +32,7 @@ spec:
         - name: github-registry
       containers:
         - name: webserver005-frontend-container
-          image: "ghcr.io/eliasdh-com/tereikenbe-frontend:latest"
+          image: "ghcr.io/eliasdhcom/tereikenbe-frontend:latest"
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
