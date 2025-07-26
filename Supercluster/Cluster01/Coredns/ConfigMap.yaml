@@ -50,6 +50,15 @@ data:
         }
     }
 
+    nepflix.eliasdh.com:53 {
+        errors
+        cache 30
+        hosts {
+            192.168.1.200 nepflix.eliasdh.com
+            fallthrough
+        }
+    }
+
     levelup.eliasdh.com:53 {
         errors
         cache 30

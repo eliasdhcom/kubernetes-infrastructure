@@ -1,0 +1,34 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin-ingress
+  namespace: jellyfin
+  annotations:
+    cert-manager.io/issuer: "jellyfin-letsencrypt-issuer"
+    nginx.ingress.kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true" # Redirect HTTP to HTTPS
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - nepflix.eliasdh.com
+      secretName: nepflixeliasdhcom-tls
+  rules:
+    - host: nepflix.eliasdh.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: jellyfin-service
+                port:
+                  number: 80
+---
