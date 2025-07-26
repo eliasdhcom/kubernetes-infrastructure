@@ -7,7 +7,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jellyfin-pv
+  name: jellyfin-pv-1
   namespace: jellyfin
 spec:
   capacity:
@@ -15,9 +15,32 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: local-storage
+  storageClassName: local-storage-1
   local:
     path: /mnt/jellyfin01
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - node05
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jellyfin-pv-2
+  namespace: jellyfin
+spec:
+  capacity:
+    storage: 3600Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage-2
+  local:
+    path: /mnt/jellyfin02
   nodeAffinity:
     required:
       nodeSelectorTerms:
