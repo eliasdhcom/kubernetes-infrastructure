@@ -18,10 +18,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - nepflix.eliasdh.com
-      secretName: nepflixeliasdhcom-tls
+      - flix.eliasdh.com
+      secretName: flixeliasdhcom-tls
   rules:
-    - host: nepflix.eliasdh.com
+    - host: flix.eliasdh.com
       http:
         paths:
           - path: /

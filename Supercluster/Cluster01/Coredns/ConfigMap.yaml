@@ -50,11 +50,11 @@ data:
         }
     }
 
-    nepflix.eliasdh.com:53 {
+    flix.eliasdh.com:53 {
         errors
         cache 30
         hosts {
-            192.168.1.200 nepflix.eliasdh.com
+            192.168.1.200 flix.eliasdh.com
             fallthrough
         }
     }
