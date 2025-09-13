@@ -8,7 +8,8 @@
 3. [✨Steps](#✨steps)
     1. [👉Step 1: Create a GitHub Secrets](#👉step-1-create-a-github-secrets)
     2. [👉Step 2: Create a GitHub Secrets](#👉step-2-create-a-github-secrets)
-4. [🔗Links](#🔗links)
+4. [👉Extra: Copy a Secret to another namespace](#👉extra-copy-a-secret-to-another-namespace)
+5. [🔗Links](#🔗links)
 
 ---
 
@@ -38,6 +39,13 @@ kubectl create secret docker-registry gitlab-registry \
     --docker-password=<access_token> \
     --docker-email=<email> \
     --namespace=default
+```
+
+## 👉Extra: Copy a Secret to another namespace
+```bash
+kubectl get secret github-registry -n webserver002 -o yaml \
+  | sed "s/namespace: webserver002/namespace: webserver003/" \
+  | kubectl apply -n webserver003 -f -
 ```
 
 ## 🔗Links

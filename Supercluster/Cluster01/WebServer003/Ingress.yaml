@@ -37,5 +37,5 @@ spec:
               service:
                 name: webserver003-backend-service
                 port:
-                  number: 3000
+                  number: 8080
 ---
