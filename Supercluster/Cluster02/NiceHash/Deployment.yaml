@@ -1,0 +1,33 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nicehash-deployment
+  namespace: nicehash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nicehash
+  template:
+    metadata:
+      labels:
+        app: nicehash
+    spec:
+      containers:
+        - name: nicehash-container
+          image: "dockerhubnh/nicehash:latest"
+          env:
+            - name: MINING_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: nicehash-secret
+                  key: MINING_ADDRESS
+            - name: MINING_WORKER_NAME
+              value: "k8s-miner"
+---
