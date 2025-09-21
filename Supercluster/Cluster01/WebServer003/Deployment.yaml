@@ -76,7 +76,11 @@ spec:
           imagePullPolicy: Always
           env:
             - name: DB_URL
-              value: webserver003-mysql-service:3306
+              value: webserver003-mysql-service:3306/levelup
+            - name: FRONTEND_URL
+              value: https://app.levelup.be
+            - name: CONFIG_ENV
+              value: prod
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
@@ -87,10 +91,6 @@ spec:
                 secretKeyRef:
                   name: webserver003-secret
                   key: MYSQL_PASSWORD
-            - name: FRONTEND_URL
-              value: https://app.levelup.be
-            - name: CONFIG_ENV
-              value: prod
           ports:
             - containerPort: 8080
           resources:
