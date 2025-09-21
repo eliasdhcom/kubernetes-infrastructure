@@ -89,8 +89,8 @@ spec:
                   key: MYSQL_PASSWORD
             - name: FRONTEND_URL
               value: https://app.levelup.be
-            - name: ENVIRONMENT
-              value: production
+            - name: CONFIG_ENV
+              value: prod
           ports:
             - containerPort: 8080
           resources:
