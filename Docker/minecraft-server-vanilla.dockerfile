@@ -27,10 +27,10 @@
 FROM ubuntu:25.04
 
 # Labels for metadata
-LABEL maintainer "Minecraft Server Vanilla"
-LABEL version "1.0"
-LABEL description "EliasDH Minecraft Server Vanilla"
-LABEL org.opencontainers.image.description "EliasDH Minecraft Server Vanilla"
+LABEL maintainer="Minecraft Server Vanilla"
+LABEL version="1.0"
+LABEL description="EliasDH Minecraft Server Vanilla"
+LABEL org.opencontainers.image.description="EliasDH Minecraft Server Vanilla"
 
 # Install dependencies
 RUN apt-get update && apt-get upgrade -y
