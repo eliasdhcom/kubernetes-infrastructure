@@ -44,3 +44,55 @@ spec:
               memory: "64Mi"
               cpu: "250m"
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver001-backend-deployment
+  namespace: webserver001
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver001-backend
+  template:
+    metadata:
+      labels:
+        app: webserver001-backend
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - compute
+      imagePullSecrets:
+        - name: github-registry
+      containers:
+        - name: webserver001-backend-container
+          image: "ghcr.io/eliasdhcom/eliasdhcom-backend:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: ELIASDH_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: webserver001-secret
+                  key: ELIASDH_API_KEY
+            - name: ELIASDH_API_URL
+              value: "https://eliasdh.com"
+            - name: PORT
+              value: "3000"
+            - name: NODE_ENV
+              value: "production"
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+---

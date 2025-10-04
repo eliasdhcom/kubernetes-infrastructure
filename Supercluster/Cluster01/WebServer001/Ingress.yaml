@@ -44,4 +44,14 @@ spec:
                 name: webserver001-frontend-service
                 port:
                   number: 80
+    - host: eliasdh.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: webserver001-backend-service
+                port:
+                  number: 80
 ---
