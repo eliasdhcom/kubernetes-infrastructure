@@ -1,0 +1,19 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: n8n
+  labels:
+    name: n8n
+    app: n8n
+    owner: EliasDH
+    environment: production
+  annotations:
+    description: This namespace is used for the n8n application.
+    contact: info@eliasdh.com
+---
