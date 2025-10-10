@@ -82,8 +82,8 @@ spec:
                 secretKeyRef:
                   name: webserver001-secret
                   key: ELIASDH_API_KEY
-            - name: ELIASDH_API_URL
-              value: "https://eliasdh.com"
+            - name: ELIASDH_API_URL_AI_SERVICE
+              value: "http://webserver001-ai-service.webserver001.svc.cluster.local:11434"
             - name: PORT
               value: "3000"
             - name: NODE_ENV
@@ -95,4 +95,44 @@ spec:
             requests:
               memory: "64Mi"
               cpu: "250m"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webserver001-ai-service-deployment
+  namespace: webserver001
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver001-ai-service
+  template:
+    metadata:
+      labels:
+        app: webserver001-ai-service
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                      - compute
+      imagePullSecrets:
+        - name: github-registry
+      containers:
+        - name: webserver001-ai-service-container
+          image: "ghcr.io/eliasdhcom/eliasdhcom-ai-service:latest"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 11434
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "2000m"
+            limits:
+              memory: "8Gi"
+              cpu: "4000m"
 ---
