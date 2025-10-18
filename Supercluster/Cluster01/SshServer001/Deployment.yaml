@@ -36,6 +36,8 @@ spec:
           ports:
             - containerPort: 2222
           env:
+          - name: TZ
+            value: "Europe/Brussels"
           - name: PUID
             value: "1000"
           - name: PGID

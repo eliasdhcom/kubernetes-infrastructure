@@ -34,6 +34,9 @@ spec:
         - name: webserver001-frontend-container
           image: "ghcr.io/eliasdhcom/eliasdhcom-frontend:latest"
           imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "Europe/Brussels"
           ports:
             - containerPort: 8080
           resources:
@@ -77,6 +80,8 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: TZ
+              value: "Europe/Brussels"
             - name: ELIASDH_API_KEY
               valueFrom:
                 secretKeyRef:
@@ -126,6 +131,9 @@ spec:
         - name: webserver001-ai-service-container
           image: "ghcr.io/eliasdhcom/eliasdhcom-ai-service:latest"
           imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "Europe/Brussels"
           ports:
             - containerPort: 11434
           resources:

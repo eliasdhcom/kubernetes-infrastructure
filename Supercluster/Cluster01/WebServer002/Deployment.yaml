@@ -77,6 +77,8 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: TZ
+              value: "Europe/Brussels"
             - name: ROLLER_CLIENT_ID
               valueFrom:
                 secretKeyRef:

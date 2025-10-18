@@ -34,6 +34,9 @@ spec:
         - name: webserver003-frontend-container
           image: "ghcr.io/eliasdhcom/applevelupbe-frontend:latest"
           imagePullPolicy: Always
+          env:
+            - name: TZ
+              value: "Europe/Brussels"
           ports:
             - containerPort: 8080
           resources:
@@ -75,6 +78,8 @@ spec:
           image: "ghcr.io/eliasdhcom/applevelupbe-backend:latest"
           imagePullPolicy: Always
           env:
+            - name: TZ
+              value: "Europe/Brussels"
             - name: DB_URL
               value: webserver003-mysql-service:3306/levelup
             - name: FRONTEND_URL
