@@ -7,10 +7,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webserver005-ingress
-  namespace: webserver005
+  name: WebServer005-ingress
+  namespace: WebServer005
   annotations:
-    cert-manager.io/issuer: "webserver005-letsencrypt-issuer"
+    cert-manager.io/issuer: "WebServer005-letsencrypt-issuer"
     nginx.ingress.kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/ssl-redirect: "true" # Redirect HTTP to HTTPS
@@ -18,30 +18,30 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - tereiken.be
-      secretName: tereikenbe-tls
+      - levelup.be
+      secretName: levelupbe-tls
     - hosts:
-      - www.tereiken.be
-      secretName: wwwtereikenbe-tls
+      - www.levelup.be
+      secretName: wwwlevelupbe-tls
   rules:
-    - host: tereiken.be
+    - host: levelup.be
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver005-frontend-service
+                name: WebServer005-frontend-service
                 port:
                   number: 80
-    - host: www.tereiken.be
+    - host: www.levelup.be
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver005-frontend-service
+                name: WebServer005-frontend-service
                 port:
                   number: 80
 ---

@@ -7,14 +7,14 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: WebServer005-letsencrypt-issuer
-  namespace: WebServer005
+  name: WebServer006-letsencrypt-issuer
+  namespace: WebServer006
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: elias.dehondt@outlook.com
     privateKeySecretRef:
-      name: WebServer005-letsencrypt-issuer-key
+      name: WebServer006-letsencrypt-issuer-key
     solvers:
       - http01:
           ingress:

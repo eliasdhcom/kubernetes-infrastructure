@@ -68,6 +68,24 @@ data:
         }
     }
 
+    zizis.be:53 {
+        errors
+        cache 30
+        hosts {
+            192.168.1.200 zizis.be
+            fallthrough
+        }
+    }
+
+    www.zizis.be:53 {
+        errors
+        cache 30
+        hosts {
+            192.168.1.200 www.zizis.be
+            fallthrough
+        }
+    }
+
     levelup.be:53 {
         errors
         cache 30

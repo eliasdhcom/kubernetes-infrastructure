@@ -7,10 +7,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webserver004-ingress
-  namespace: webserver004
+  name: WebServer006-ingress
+  namespace: WebServer006
   annotations:
-    cert-manager.io/issuer: "webserver004-letsencrypt-issuer"
+    cert-manager.io/issuer: "WebServer006-letsencrypt-issuer"
     nginx.ingress.kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
     nginx.ingress.kubernetes.io/ssl-redirect: "true" # Redirect HTTP to HTTPS
@@ -18,30 +18,30 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - zizis.be
-      secretName: zizisbe-tls
+      - tereiken.be
+      secretName: tereikenbe-tls
     - hosts:
-      - www.zizis.be
-      secretName: wwwzizisbe-tls
+      - www.tereiken.be
+      secretName: wwwtereikenbe-tls
   rules:
-    - host: zizis.be
+    - host: tereiken.be
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver004-frontend-service
+                name: WebServer006-frontend-service
                 port:
                   number: 80
-    - host: www.zizis.be
+    - host: www.tereiken.be
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: webserver004-frontend-service
+                name: WebServer006-frontend-service
                 port:
                   number: 80
 ---
