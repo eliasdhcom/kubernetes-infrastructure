@@ -59,15 +59,6 @@ data:
         }
     }
 
-    levelup.eliasdh.com:53 {
-        errors
-        cache 30
-        hosts {
-            192.168.1.200 levelup.eliasdh.com
-            fallthrough
-        }
-    }
-
     zizis.be:53 {
         errors
         cache 30

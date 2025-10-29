@@ -19,10 +19,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - levelup.eliasdh.com
-      secretName: levelupeliasdh-tls
+      - x.eliasdh.com
+      secretName: xeliasdh-tls
   rules:
-    - host: levelup.eliasdh.com
+    - host: x.eliasdh.com
       http:
         paths:
           - path: /
