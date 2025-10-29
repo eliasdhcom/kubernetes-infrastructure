@@ -182,4 +182,4 @@ watch kubectl get nodes -o wide # Press Ctrl+C to exit
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
-- 📫 How to reach us elias.dehondt@outlook.com
+- 📫 How to reach us info@eliasdh.com

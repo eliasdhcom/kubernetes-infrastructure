@@ -12,7 +12,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: elias.dehondt@outlook.com
+    email: info@eliasdh.com
     privateKeySecretRef:
       name: docker-registry-letsencrypt-issuer-key
     solvers:

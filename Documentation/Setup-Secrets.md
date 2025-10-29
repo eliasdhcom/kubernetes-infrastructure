@@ -50,4 +50,4 @@ kubectl get secret github-registry -n webserver002 -o yaml \
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
-- 📫 How to reach us elias.dehondt@outlook.com
+- 📫 How to reach us info@eliasdh.com

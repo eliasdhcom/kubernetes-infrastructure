@@ -33,4 +33,4 @@ watch kubectl get pods -n cert-manager # CTRL+C to exit
 
 ## 🔗Links
 - 👯 Web hosting company [EliasDH.com](https://eliasdh.com).
-- 📫 How to reach us elias.dehondt@outlook.com
+- 📫 How to reach us info@eliasdh.com
