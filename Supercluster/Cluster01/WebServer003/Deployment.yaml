@@ -53,7 +53,7 @@ metadata:
   name: webserver003-backend-deployment
   namespace: webserver003
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: webserver003-backend
