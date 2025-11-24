@@ -1,0 +1,45 @@
+############################
+# @author EliasDH Team     #
+# @see https://eliasdh.com #
+# @since 01/01/2025        #
+############################
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: android-emulator-deployment
+  namespace: android-emulator
+  labels:
+    app: android-emulator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: android-emulator
+  template:
+    metadata:
+      labels:
+        app: android-emulator
+    spec:
+      containers:
+      - name: android-emulator-container
+        image: budtmo/docker-android:emulator_13.0_v2.1.3-p1
+        securityContext:
+          privileged: true
+        env:
+        - name: DEVICE
+          value: "Samsung_Galaxy"
+        - name: WEB_VNC
+          value: "true"
+        ports:
+        - containerPort: 5555    # ADB
+        - containerPort: 6080    # UI
+        volumeMounts:
+        - name: dev-kvm
+          mountPath: /dev/kvm
+      volumes:
+      - name: dev-kvm
+        hostPath:
+          path: /dev/kvm
+          type: CharDevice
+---
