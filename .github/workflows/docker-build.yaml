@@ -14,6 +14,17 @@ on:
       - main
 
 jobs:
+  android-emulator-build-push-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Login to GHCR
+        run: |
+          echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u eliasdehondt --password-stdin
+      - name: Build/Push Docker Image
+        run: |
+          docker build --push -t ghcr.io/eliasdhcom/android-emulator:latest -f ./Docker/android-emulator.dockerfile .
   minecraft-server-vanilla-build-push-docker:
     runs-on: ubuntu-latest
     steps:
